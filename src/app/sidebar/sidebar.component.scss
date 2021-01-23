@@ -1,0 +1,23 @@
+.menu {
+  padding-top: 10px;
+}
+
+.menu-item {
+  font-size: 14px;
+  padding: 10px 16px;
+
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: #6e6e6e;
+}
+
+a:hover {
+  background-color: #dbdbdb;
+}
+
+a.active {
+  color: #1976d2;
+}
