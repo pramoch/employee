@@ -12,6 +12,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { BranchesComponent } from './components/branches/branches.component';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BranchesComponent } from './components/branches/branches.component';
     ToolbarComponent,
     SidebarComponent,
     EmployeesComponent,
-    BranchesComponent
+    BranchesComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     BrowserModule,

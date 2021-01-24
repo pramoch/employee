@@ -5,7 +5,7 @@
       <th>Branch</th>
       <th>Position</th>
     </tr>
-    <tr *ngFor="let e of employees">
+    <tr *ngFor="let e of employees" routerLink="/employees/{{e.id}}">
       <td>{{e.name + ' ' + e.surname}}</td>
       <td>{{e.branch}}</td>
       <td>{{e.position}}</td>

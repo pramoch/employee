@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Employee } from '../../interfaces/employee';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { Employee } from '../../interfaces/employee';
 export class EmployeeService {
   employees: Employee[] = [
     {
+      id: '700101',
       name: 'Emma',
       surname: 'Cartner',
       joinDate: '01/06/2017',
@@ -14,6 +16,7 @@ export class EmployeeService {
       branch: 'London'
     },
     {
+      id: '700102',
       name: 'Quinn',
       surname: 'Rivers',
       joinDate: '01/10/2015',
@@ -21,6 +24,7 @@ export class EmployeeService {
       branch: 'London'
     },
     {
+      id: '700103',
       name: 'Amelia',
       surname: 'Burrows',
       joinDate: '01/02/2018',
@@ -28,6 +32,7 @@ export class EmployeeService {
       branch: 'Manchester'
     },
     {
+      id: '700104',
       name: 'Jacob',
       surname: 'Walsh',
       joinDate: '01/07/2015',
@@ -35,6 +40,7 @@ export class EmployeeService {
       branch: 'Manchester'
     },
     {
+      id: '700105',
       name: 'Martha',
       surname: 'Hills',
       joinDate: '01/04/2015',
@@ -42,6 +48,7 @@ export class EmployeeService {
       branch: 'Manchester'
     },
     {
+      id: '700106',
       name: 'Tracy',
       surname: 'Robertson',
       joinDate: '01/02/2016',
@@ -49,6 +56,7 @@ export class EmployeeService {
       branch: 'Oxford'
     },
     {
+      id: '700107',
       name: 'Harvey',
       surname: 'Longbottom',
       joinDate: '01/11/2017',
@@ -56,6 +64,7 @@ export class EmployeeService {
       branch: 'Oxford'
     },
     {
+      id: '700108',
       name: 'Rinzee',
       surname: 'Wilma',
       joinDate: '01/04/2014',
@@ -63,6 +72,7 @@ export class EmployeeService {
       branch: 'Oxford'
     },
     {
+      id: '700109',
       name: 'Clark',
       surname: 'Elsie',
       joinDate: '01/12/2019',
@@ -70,6 +80,7 @@ export class EmployeeService {
       branch: 'Oxford'
     },
     {
+      id: '700110',
       name: 'Walker',
       surname: 'Kristen',
       joinDate: '01/01/2019',
@@ -80,7 +91,7 @@ export class EmployeeService {
 
   constructor() { }
 
-  getEmployees(): Employee[] {
-    return this.employees;
+  getEmployees(): Observable<Employee[]> {
+    return of(this.employees);
   }
 }
