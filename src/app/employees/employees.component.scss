@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+}
+
+.table-wrapper {
+  flex: 1 1 auto;
+  max-width: 1000px;
+}
+
+table {
+  width: 100%;
+  background: #ffffff;
+  border-collapse: collapse;
+  border: 1px solid rgba(0,0,0,.12);
+}
+
+tr {
+  height: 48px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+tr:hover {
+  background: whitesmoke;
+  cursor: pointer;
+}
+
+th, td {
+  padding-left: 24px;
+}
+
+th {
+  text-align: left;
+}

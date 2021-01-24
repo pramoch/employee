@@ -1,1 +1,14 @@
-<p>employees works!</p>
+<div class='table-wrapper'>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Branch</th>
+      <th>Position</th>
+    </tr>
+    <tr *ngFor="let e of employees">
+      <td>{{e.name + ' ' + e.surname}}</td>
+      <td>{{e.branch}}</td>
+      <td>{{e.position}}</td>
+    </tr>
+  </table>
+</div>
