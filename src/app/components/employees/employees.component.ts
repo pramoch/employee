@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../../services/employee/employee.service';
+import { Employee } from '../../interfaces/employee';
 
 @Component({
   selector: 'app-employees',
@@ -6,85 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
-  // id
-  // salary
-  // mobile no.
-  employees = [
-    {
-      name: 'Emma',
-      surname: 'Cartner',
-      joinDate: '01/06/2017',
-      position: 'Officer',
-      branch: 'London'
-    },
-    {
-      name: 'Quinn',
-      surname: 'Rivers',
-      joinDate: '01/10/2015',
-      position: 'Branch Manager',
-      branch: 'London'
-    },
-    {
-      name: 'Amelia',
-      surname: 'Burrows',
-      joinDate: '01/02/2018',
-      position: 'Officer',
-      branch: 'Manchester'
-    },
-    {
-      name: 'Jacob',
-      surname: 'Walsh',
-      joinDate: '01/07/2015',
-      position: 'Officer',
-      branch: 'Manchester'
-    },
-    {
-      name: 'Martha',
-      surname: 'Hills',
-      joinDate: '01/04/2015',
-      position: 'Branch Manager',
-      branch: 'Manchester'
-    },
-    {
-      name: 'Tracy',
-      surname: 'Robertson',
-      joinDate: '01/02/2016',
-      position: 'Officer',
-      branch: 'Oxford'
-    },
-    {
-      name: 'Harvey',
-      surname: 'Longbottom',
-      joinDate: '01/11/2017',
-      position: 'Officer',
-      branch: 'Oxford'
-    },
-    {
-      name: 'Rinzee',
-      surname: 'Wilma',
-      joinDate: '01/04/2014',
-      position: 'Officer',
-      branch: 'Oxford'
-    },
-    {
-      name: 'Clark',
-      surname: 'Elsie',
-      joinDate: '01/12/2019',
-      position: 'Officer',
-      branch: 'Oxford'
-    },
-    {
-      name: 'Walker',
-      surname: 'Kristen',
-      joinDate: '01/01/2019',
-      position: 'Branch Manager',
-      branch: 'Oxford'
-    }
-  ];
+  employees: Employee[] = [];
 
-  constructor() { }
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
+    this.employees = this.employeeService.getEmployees();
   }
 
 }
