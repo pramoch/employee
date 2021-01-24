@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
+  // id
+  // salary
+  // mobile no.
   employees = [
     {
       name: 'Emma',
