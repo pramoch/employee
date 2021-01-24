@@ -8,10 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { EmployeesComponent } from './employees/employees.component';
-import { BranchesComponent } from './branches/branches.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { EmployeesComponent } from './components/employees/employees.component';
+import { BranchesComponent } from './components/branches/branches.component';
 
 @NgModule({
   declarations: [
