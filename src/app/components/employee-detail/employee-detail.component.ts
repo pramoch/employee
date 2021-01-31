@@ -29,6 +29,7 @@ export class EmployeeDetailComponent implements OnInit {
       this.employeeService.getEmployeeById(id).subscribe(e => {
         if (e) {
           this.emp = e;
+          this.emp.joinDate = new Date(this.emp.joinDate);
         }
       })
     }

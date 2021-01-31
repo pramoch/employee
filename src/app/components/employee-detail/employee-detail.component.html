@@ -20,10 +20,10 @@
       <div>Branch</div><div>{{emp.branch}}</div>
     </div>
     <div class="info">
-      <div>Salary</div><div>{{emp.salary}}</div>
+      <div>Salary</div><div>{{emp.salary | number}}</div>
     </div>
     <div class="info">
-      <div>Joined date</div><div>{{emp.joinDate}}</div>
+      <div>Joined date</div><div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>
     </div>
   </div>
 </div>

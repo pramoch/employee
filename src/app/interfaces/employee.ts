@@ -4,7 +4,7 @@ export interface Employee {
   surname: string;
   mobileNo: string;
   salary: number;
-  joinDate: string;
+  joinDate: string | Date;
   position: string;
   branch: string;
 }
