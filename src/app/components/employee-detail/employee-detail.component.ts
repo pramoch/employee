@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EmployeeService } from '../../services/employee/employee.service';
+import { Employee } from '../../interfaces/employee';
 
 @Component({
   selector: 'app-employee-detail',
@@ -7,12 +9,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./employee-detail.component.scss']
 })
 export class EmployeeDetailComponent implements OnInit {
-  id: string | null = '';
+  employee: Employee | null = null;
 
-  constructor( private route: ActivatedRoute,) { }
+  constructor(private route: ActivatedRoute, private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-  }
+    const id = this.route.snapshot.paramMap.get('id');
 
+    if (id) {
+      this.employeeService.getEmployeeById(id).subscribe(e => {
+        this.employee = e;
+      })
+    }
+  }
 }
