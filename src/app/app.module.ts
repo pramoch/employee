@@ -13,6 +13,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { BranchesComponent } from './components/branches/branches.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
+import { PhonePipe } from './pipes/phone/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EmployeeDetailComponent } from './components/employee-detail/employee-d
     SidebarComponent,
     EmployeesComponent,
     BranchesComponent,
-    EmployeeDetailComponent
+    EmployeeDetailComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
