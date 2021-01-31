@@ -1,1 +1,29 @@
-<p>{{employee && employee.name}}</p>
+<div>
+  <div class="section">
+    <div class="title">Personal Info</div>
+    <div class="info">
+      <div>Employee ID</div><div>{{emp.id}}</div>
+    </div>
+    <div class="info">
+      <div>Name</div><div>{{emp.name + ' ' + emp.surname}}</div>
+    </div>
+    <div class="info">
+      <div>Mobile No.</div><div>{{emp.mobileNo}}</div>
+    </div>
+  </div>
+  <div>
+    <div class="title">Working Info</div>
+    <div class="info">
+      <div>Position</div><div>{{emp.position}}</div>
+    </div>
+    <div class="info">
+      <div>Branch</div><div>{{emp.branch}}</div>
+    </div>
+    <div class="info">
+      <div>Salary</div><div>{{emp.salary}}</div>
+    </div>
+    <div class="info">
+      <div>Joined date</div><div>{{emp.joinDate}}</div>
+    </div>
+  </div>
+</div>

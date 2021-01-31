@@ -9,7 +9,16 @@ import { Employee } from '../../interfaces/employee';
   styleUrls: ['./employee-detail.component.scss']
 })
 export class EmployeeDetailComponent implements OnInit {
-  employee: Employee | null = null;
+  emp: Employee = {
+    id: '',
+    name: '',
+    surname: '',
+    mobileNo: '',
+    salary: 0,
+    joinDate: '',
+    position: '',
+    branch: ''
+  };
 
   constructor(private route: ActivatedRoute, private employeeService: EmployeeService) { }
 
@@ -18,7 +27,9 @@ export class EmployeeDetailComponent implements OnInit {
 
     if (id) {
       this.employeeService.getEmployeeById(id).subscribe(e => {
-        this.employee = e;
+        if (e) {
+          this.emp = e;
+        }
       })
     }
   }
