@@ -18,8 +18,9 @@
     font-family: inherit;
     color: inherit;
     font-size: 14px;
-    padding: 4px 8px;
+    padding: 8px;
     width: 300px;
+    border: 1px solid rgba(0,0,0,.12);
   }
 
   input::placeholder {
@@ -27,7 +28,7 @@
   }
 
   mat-icon {
-    position: relative;
+    position: absolute;
     right: 24px;
     color: rgba(0,0,0,0.3);
     font-size: 20px;
