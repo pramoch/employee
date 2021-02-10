@@ -7,6 +7,35 @@
   max-width: 1000px;
 }
 
+.search {
+  text-align: right;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 14px;
+    padding: 4px 8px;
+    width: 300px;
+  }
+
+  input::placeholder {
+    color: rgba(0,0,0,.50);
+  }
+
+  mat-icon {
+    position: relative;
+    right: 24px;
+    color: rgba(0,0,0,0.3);
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
 table {
   width: 100%;
   background: #ffffff;
