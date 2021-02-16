@@ -106,6 +106,76 @@ export class EmployeeService {
       joinDate: '01/01/2019',
       position: 'Branch Manager',
       branch: 'Oxford'
+    },
+    {
+      id: '700111',
+      name: 'Christine',
+      surname: 'Mccarty',
+      mobileNo: '0897750223',
+      salary: 26000,
+      joinDate: '01/03/2015',
+      position: 'Branch Manager',
+      branch: 'Bristol'
+    },
+    {
+      id: '700112',
+      name: 'Lacey',
+      surname: 'O\'Ryan',
+      mobileNo: '0819896547',
+      salary: 15000,
+      joinDate: '01/04/2016',
+      position: 'Officer',
+      branch: 'Bristol'
+    },
+    {
+      id: '700113',
+      name: 'Troy',
+      surname: 'Bryant',
+      mobileNo: '0861131447',
+      salary: 16000,
+      joinDate: '01/01/2018',
+      position: 'Officer',
+      branch: 'Bristol'
+    },
+    {
+      id: '700114',
+      name: 'Ellie',
+      surname: 'Stewart',
+      mobileNo: '0640509987',
+      salary: 17000,
+      joinDate: '01/08/2018',
+      position: 'Officer',
+      branch: 'Bristol'
+    },
+    {
+      id: '700115',
+      name: 'Velma',
+      surname: 'Farmer',
+      mobileNo: '0663456877',
+      salary: 27000,
+      joinDate: '01/09/2017',
+      position: 'Branch Manager',
+      branch: 'Birmingham'
+    },
+    {
+      id: '700116',
+      name: 'Nadia',
+      surname: 'Pugh',
+      mobileNo: '0692524467',
+      salary: 17000,
+      joinDate: '01/10/2019',
+      position: 'Officer',
+      branch: 'Birmingham'
+    },
+    {
+      id: '700117',
+      name: 'Charley',
+      surname: 'Pratt',
+      mobileNo: '0816450080',
+      salary: 16000,
+      joinDate: '01/02/2019',
+      position: 'Officer',
+      branch: 'Birmingham'
     }
   ];
 

@@ -14,7 +14,7 @@ export class EmployeesComponent implements OnInit {
   employees: Employee[] = [];
   searchTerms: Subject<string> = new Subject<string>();
   pageIndex = 0;
-  pageSize = 4;
+  pageSize = 10;
   totalEmployees = 0;
   term = '';
 
