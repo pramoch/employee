@@ -28,8 +28,9 @@
   }
 
   mat-icon {
-    position: absolute;
+    position: relative;
     right: 24px;
+    margin-right: -20px;
     color: rgba(0,0,0,0.3);
     font-size: 20px;
     height: 20px;
