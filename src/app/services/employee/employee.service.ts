@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Employee } from '../../interfaces/employee';
+import { Employee, EmployeeResult } from '../../interfaces/employee';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -111,8 +111,35 @@ export class EmployeeService {
 
   constructor() { }
 
-  getEmployees(): Observable<Employee[]> {
-    return of(this.employees);
+  private getEmployeesByName(term: string): Employee[] {
+    let result: Employee[];
+
+    term = term.toLowerCase();
+
+    result = this.employees.filter((emp) => {
+      return emp.name.toLowerCase().includes(term) || emp.surname.toLowerCase().includes(term)
+    });
+
+    return result;
+  }
+
+  getEmployees(term: string, limit: number, offset: number = 0): Observable<EmployeeResult> {
+    let result: Employee[];
+    let limitedResult: Employee[];
+
+    if (term) {
+      result = this.getEmployeesByName(term);
+    }
+    else {
+      result = this.employees;
+    }
+
+    limitedResult = result.slice(offset, offset + limit);
+
+    return of({
+      employees: limitedResult,
+      total: result.length
+    });
   }
 
   getEmployeeById(id: string): Observable<Employee | null> {

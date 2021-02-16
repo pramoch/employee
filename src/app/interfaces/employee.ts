@@ -8,3 +8,8 @@ export interface Employee {
   position: string;
   branch: string;
 }
+
+export interface EmployeeResult {
+  employees: Employee[];
+  total: number;
+}

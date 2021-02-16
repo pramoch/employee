@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../interfaces/employee';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-employees',
@@ -12,14 +13,14 @@ import { Employee } from '../../interfaces/employee';
 export class EmployeesComponent implements OnInit {
   employees: Employee[] = [];
   searchTerms: Subject<string> = new Subject<string>();
+  pageIndex = 0;
+  pageSize = 4;
+  totalEmployees = 0;
+  term = '';
 
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.employeeService.getEmployees().subscribe(employees => {
-      this.employees = employees;
-    });
-
     this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
@@ -28,11 +29,27 @@ export class EmployeesComponent implements OnInit {
       distinctUntilChanged()
 
     ).subscribe(term => {
-      console.log(term)
+      this.term = term;
+      this.pageIndex = 0;
+      this.updateEmployees();
     });
+
+    this.updateEmployees();
   }
 
   search(term: string): void {
     this.searchTerms.next(term);
+  }
+
+  onPageChanged(e: PageEvent): void {
+    this.pageIndex = e.pageIndex;
+    this.updateEmployees();
+  }
+
+  private updateEmployees(): void {
+    this.employeeService.getEmployees(this.term, this.pageSize, this.pageIndex * this.pageSize).subscribe(result => {
+      this.employees = result.employees;
+      this.totalEmployees = result.total;
+    });
   }
 }

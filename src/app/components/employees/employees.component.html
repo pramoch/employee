@@ -15,4 +15,13 @@
       <td>{{e.position}}</td>
     </tr>
   </table>
+  <div>
+    <mat-paginator
+      [length]="totalEmployees"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      (page)="onPageChanged($event)"
+      >
+    </mat-paginator>
+  </div>
 </div>
