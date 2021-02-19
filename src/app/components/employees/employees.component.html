@@ -10,7 +10,7 @@
       <th>Position</th>
     </tr>
     <tr *ngFor="let e of employees" routerLink="/employees/{{e.id}}">
-      <td>{{e.name + ' ' + e.surname}}</td>
+      <td><a routerLink="/employees/{{e.id}}">{{e.name + ' ' + e.surname}}</a></td>
       <td>{{e.branch}}</td>
       <td>{{e.position}}</td>
     </tr>
