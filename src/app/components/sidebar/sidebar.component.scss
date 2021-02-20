@@ -7,10 +7,14 @@
   padding: 8px 16px;
 }
 
+a {
+  color: rgba(0,0,0,.65);
+}
+
 a:hover {
-  background-color: #dbdbdb;
+  background-color: whitesmoke;
 }
 
 a.active {
-  color: #1976d2;
+  color: #3f51b5;
 }
