@@ -15,16 +15,18 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { BranchesComponent } from './components/branches/branches.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { PhonePipe } from './pipes/phone/phone.pipe';
+import { SalesComponent } from './components/sales/sales.component';
 
 @NgModule({
   declarations: [
+    PhonePipe,
     AppComponent,
     ToolbarComponent,
     SidebarComponent,
     EmployeesComponent,
     BranchesComponent,
     EmployeeDetailComponent,
-    PhonePipe
+    SalesComponent
   ],
   imports: [
     BrowserModule,

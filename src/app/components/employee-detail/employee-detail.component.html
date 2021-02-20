@@ -1,12 +1,12 @@
 <div class="top-bar">
   <div class="middle-space"></div>
-  <ngTemplate *ngIf="mode === 'view'">
+  <ng-template [ngIf]="mode === 'view'">
     <button class="main" (click)="onEdit()">Edit</button>
-  </ngTemplate>
-  <ngTemplate *ngIf="mode === 'edit'">
+  </ng-template>
+  <ng-template [ngIf]="mode === 'edit'">
     <button class="main cancel" (click)="onCancel()" >Cancel</button>
     <button class="main" (click)="onSave()">Save</button>
-  </ngTemplate>
+  </ng-template>
 </div>
 <div class="wrapper">
   <div class="section">
