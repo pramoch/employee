@@ -1,12 +1,21 @@
 <div class="top-bar">
   <div class="middle-space"></div>
-  <button class="main">Edit</button>
+  <ngTemplate *ngIf="mode === 'view'">
+    <button class="main" (click)="onEdit()">Edit</button>
+  </ngTemplate>
+  <ngTemplate *ngIf="mode === 'edit'">
+    <button class="main cancel" (click)="onCancel()" >Cancel</button>
+    <button class="main" (click)="onSave()">Save</button>
+  </ngTemplate>
 </div>
 <div class="wrapper">
   <div class="section">
     <div class="title">Personal Info</div>
     <div class="info">
-      <div>Name</div><div>{{emp.name + ' ' + emp.surname}}</div>
+      <div>Name</div><div>{{emp.name}}</div>
+    </div>
+    <div class="info">
+      <div>Surname</div><div>{{emp.surname}}</div>
     </div>
     <div class="info">
       <div>Mobile No.</div><div>{{emp.mobileNo | phone}}</div>

@@ -19,6 +19,7 @@ export class EmployeeDetailComponent implements OnInit {
     position: '',
     branch: ''
   };
+  mode = 'view';
 
   constructor(private route: ActivatedRoute, private employeeService: EmployeeService) { }
 
@@ -33,5 +34,17 @@ export class EmployeeDetailComponent implements OnInit {
         }
       })
     }
+  }
+
+  onEdit(): void {
+    this.mode = 'edit';
+  }
+
+  onSave(): void {
+    this.mode = 'view';
+  }
+
+  onCancel(): void {
+    this.mode = 'view';
   }
 }
