@@ -1,12 +1,6 @@
-:host {
-  display: flex;
-}
-
 .wrapper {
   background: white;
   padding: 16px 16px 0;
-  flex: 1 1 auto;
-  max-width: 1000px;
 }
 
 .section:not(:last-child) {
