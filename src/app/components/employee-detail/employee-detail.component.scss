@@ -1,16 +1,30 @@
-.section {
+:host {
+  display: flex;
+}
+
+.wrapper {
+  background: white;
+  padding: 16px 16px 0;
+  flex: 1 1 auto;
+  max-width: 1000px;
+}
+
+.section:not(:last-child) {
   padding-bottom: 8px;
 }
 
 .title {
   font-weight: bold;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #3f51b5;
+  color: #3f51b5;
 }
 
 .info {
   display: flex;
   margin-left: 16px;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
 
   div:first-child {
     flex: 0 0 150px;

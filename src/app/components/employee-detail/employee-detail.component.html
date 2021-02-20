@@ -1,9 +1,6 @@
-<div>
+<div class="wrapper">
   <div class="section">
     <div class="title">Personal Info</div>
-    <div class="info">
-      <div>Employee ID</div><div>{{emp.id}}</div>
-    </div>
     <div class="info">
       <div>Name</div><div>{{emp.name + ' ' + emp.surname}}</div>
     </div>
@@ -11,8 +8,11 @@
       <div>Mobile No.</div><div>{{emp.mobileNo | phone}}</div>
     </div>
   </div>
-  <div>
+  <div class="section">
     <div class="title">Working Info</div>
+    <div class="info">
+      <div>Employee ID</div><div>{{emp.id}}</div>
+    </div>
     <div class="info">
       <div>Position</div><div>{{emp.position}}</div>
     </div>
