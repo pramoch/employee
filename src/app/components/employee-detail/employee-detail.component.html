@@ -12,13 +12,31 @@
   <div class="section">
     <div class="title">Personal Info</div>
     <div class="info">
-      <div>Name</div><div>{{emp.name}}</div>
+      <div>Name</div>
+      <ng-template [ngIf]="mode === 'view'">
+        <div>{{emp.name}}</div>
+      </ng-template>
+      <ng-template [ngIf]="mode === 'edit'">
+        <input class="main" type="text" value="{{emp.name}}">
+      </ng-template>
     </div>
     <div class="info">
-      <div>Surname</div><div>{{emp.surname}}</div>
+      <div>Surname</div>
+      <ng-template [ngIf]="mode === 'view'">
+        <div>{{emp.surname}}</div>
+      </ng-template>
+      <ng-template [ngIf]="mode === 'edit'">
+        <input class="main" type="text" value="{{emp.surname}}">
+      </ng-template>
     </div>
     <div class="info">
-      <div>Mobile No.</div><div>{{emp.mobileNo | phone}}</div>
+      <div>Mobile No.</div>
+      <ng-template [ngIf]="mode === 'view'">
+        <div>{{emp.mobileNo | phone}}</div>
+      </ng-template>
+      <ng-template [ngIf]="mode === 'edit'">
+        <input class="main" type="text" value="{{emp.mobileNo}}">
+      </ng-template>
     </div>
   </div>
   <div class="section">
@@ -33,7 +51,13 @@
       <div>Branch</div><div>{{emp.branch}}</div>
     </div>
     <div class="info">
-      <div>Salary</div><div>{{emp.salary | number}}</div>
+      <div>Salary</div>
+      <ng-template [ngIf]="mode === 'view'">
+        <div>{{emp.salary | number}}</div>
+      </ng-template>
+      <ng-template [ngIf]="mode === 'edit'">
+        <input class="main" type="text" value="{{emp.salary}}">
+      </ng-template>
     </div>
     <div class="info">
       <div>Joined date</div><div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>

@@ -9,7 +9,7 @@
 }
 
 .section:not(:last-child) {
-  padding-bottom: 8px;
+  padding-bottom: 16px;
 }
 
 .title {
@@ -23,7 +23,9 @@
 .info {
   display: flex;
   margin-left: 16px;
-  padding-bottom: 16px;
+  padding-bottom: 8px;
+  height: 32px;
+  align-items: center;
 
   div:first-child {
     flex: 0 0 150px;

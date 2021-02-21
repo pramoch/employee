@@ -42,3 +42,16 @@ button.main {
     border: 1px solid #445DBF;
   }
 }
+
+input.main {
+  padding: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  font-size: inherit;
+  font-family: inherit;
+  outline: none;
+
+  &:focus {
+    border-color: #445DBF;
+  }
+}
