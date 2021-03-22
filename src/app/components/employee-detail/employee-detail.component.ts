@@ -20,6 +20,7 @@ export class EmployeeDetailComponent implements OnInit {
     branch: ''
   };
   mode = 'view';
+  positions: string[] = [];
 
   constructor(private route: ActivatedRoute, private employeeService: EmployeeService) { }
 
@@ -34,6 +35,10 @@ export class EmployeeDetailComponent implements OnInit {
         }
       })
     }
+
+    this.employeeService.getPositions().subscribe(p => {
+      this.positions = p;
+    })
   }
 
   onEdit(): void {

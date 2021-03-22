@@ -179,6 +179,11 @@ export class EmployeeService {
     }
   ];
 
+  positions = [
+    'Branch Manager',
+    'Officer'
+  ];
+
   constructor() { }
 
   private getEmployeesByName(term: string): Employee[] {
@@ -214,5 +219,9 @@ export class EmployeeService {
 
   getEmployeeById(id: string): Observable<Employee | null> {
     return of(this.employees.find(e => e.id === id) || null);
+  }
+
+  getPositions(): Observable<string[]> {
+    return of(this.positions);
   }
 }

@@ -55,3 +55,13 @@ input.main {
     border-color: #445DBF;
   }
 }
+
+select.main {
+  padding: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  font-size: inherit;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}

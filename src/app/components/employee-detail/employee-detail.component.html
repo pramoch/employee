@@ -9,6 +9,7 @@
   </ng-template>
 </div>
 <div class="wrapper">
+  <!-- Personal Info -->
   <div class="section">
     <div class="title">Personal Info</div>
     <div class="info">
@@ -39,13 +40,22 @@
       </ng-template>
     </div>
   </div>
+  <!-- Working Info -->
   <div class="section">
     <div class="title">Working Info</div>
     <div class="info">
       <div>Employee ID</div><div>{{emp.id}}</div>
     </div>
     <div class="info">
-      <div>Position</div><div>{{emp.position}}</div>
+      <div>Position</div>
+      <ng-template [ngIf]="mode === 'view'">
+        <div>{{emp.position}}</div>
+      </ng-template>
+      <ng-template [ngIf]="mode === 'edit'">
+        <select class="main">
+          <option *ngFor="let p of positions" value="{{p}}" [selected]="p === emp.position">{{p}}</option>
+        </select>
+      </ng-template>
     </div>
     <div class="info">
       <div>Branch</div><div>{{emp.branch}}</div>
