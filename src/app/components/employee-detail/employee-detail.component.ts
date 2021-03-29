@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../interfaces/employee';
 import { BranchService } from '../../services/branch/branch.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-detail',
@@ -23,6 +24,7 @@ export class EmployeeDetailComponent implements OnInit {
   mode = 'view';
   positions: string[] = [];
   branches: string[] = [];
+  joinDate!: FormControl;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class EmployeeDetailComponent implements OnInit {
         if (e) {
           this.emp = e;
           this.emp.joinDate = new Date(this.emp.joinDate);
+          this.joinDate = new FormControl(this.emp.joinDate);
         }
       });
     }
@@ -47,7 +50,6 @@ export class EmployeeDetailComponent implements OnInit {
 
     this.branchService.getBranches().subscribe(b => {
       this.branches = b;
-      console.log(this.branches);
     });
   }
 

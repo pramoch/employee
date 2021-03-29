@@ -78,7 +78,15 @@
       </ng-template>
     </div>
     <div class="info">
-      <div>Joined date</div><div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>
+      <div>Joined date</div>
+      <ng-template [ngIf]="mode === 'view'">
+        <div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>
+      </ng-template>
+      <ng-template [ngIf]="mode === 'edit'">
+        <input class="main" type="text" [matDatepicker]="picker" [value]="this.joinDate.value">
+        <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </ng-template>
     </div>
   </div>
 </div>
