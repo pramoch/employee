@@ -192,7 +192,7 @@ export class EmployeeService {
     term = term.toLowerCase();
 
     result = this.employees.filter((emp) => {
-      return emp.name.toLowerCase().includes(term) || emp.surname.toLowerCase().includes(term)
+      return emp.name.toLowerCase().includes(term) || emp.surname.toLowerCase().includes(term);
     });
 
     return result;

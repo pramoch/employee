@@ -9,7 +9,7 @@ export class SidebarComponent implements OnInit {
   items = [
     { label: 'Employees', link: '/employees' },
     { label: 'Branches', link: '/branches' },
-    { label: 'Sales', link: "/sales"}
+    { label: 'Sales', link: '/sales'}
   ];
 
   constructor() { }

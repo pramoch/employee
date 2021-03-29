@@ -58,7 +58,15 @@
       </ng-template>
     </div>
     <div class="info">
-      <div>Branch</div><div>{{emp.branch}}</div>
+      <div>Branch</div>
+      <ng-template [ngIf]="mode === 'view'">
+        <div>{{emp.branch}}</div>
+      </ng-template>
+      <ng-template [ngIf]="mode === 'edit'">
+        <select class="main">
+          <option *ngFor="let b of branches" value="{{b}}" [selected]="b === emp.branch">{{b}}</option>
+        </select>
+      </ng-template>
     </div>
     <div class="info">
       <div>Salary</div>
