@@ -16,7 +16,7 @@
       <div class="info">
         <div>Name</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{emp.name}}</div>
+          <div>{{employeeForm.value.name}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <input class="main" type="text" formControlName="name">
@@ -25,7 +25,7 @@
       <div class="info">
         <div>Surname</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{emp.surname}}</div>
+          <div>{{employeeForm.value.surname}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <input class="main" type="text" formControlName="surname">
@@ -34,10 +34,10 @@
       <div class="info">
         <div>Mobile No.</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{emp.mobileNo | phone}}</div>
+          <div>{{employeeForm.value.mobileNo | phone}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
-          <input class="main" type="text" value="{{emp.mobileNo}}">
+          <input class="main" type="text" formControlName="mobileNo">
         </ng-template>
       </div>
     </div>
@@ -50,41 +50,41 @@
       <div class="info">
         <div>Position</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{emp.position}}</div>
+          <div>{{employeeForm.value.position}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
-          <select class="main">
-            <option *ngFor="let p of positions" value="{{p}}" [selected]="p === emp.position">{{p}}</option>
+          <select class="main" formControlName="position">
+            <option *ngFor="let p of positions" [ngValue]="p">{{p}}</option>
           </select>
         </ng-template>
       </div>
       <div class="info">
         <div>Branch</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{emp.branch}}</div>
+          <div>{{employeeForm.value.branch}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
-          <select class="main">
-            <option *ngFor="let b of branches" value="{{b}}" [selected]="b === emp.branch">{{b}}</option>
+          <select class="main" formControlName="branch">
+            <option *ngFor="let b of branches" [ngValue]="b">{{b}}</option>
           </select>
         </ng-template>
       </div>
       <div class="info">
         <div>Salary</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{emp.salary | number}}</div>
+          <div>{{employeeForm.value.salary | number}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
-          <input class="main" type="text" value="{{emp.salary}}">
+          <input class="main" type="number" formControlName="salary">
         </ng-template>
       </div>
       <div class="info">
         <div>Joined date</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>
+          <div>{{employeeForm.value.joinDate | date: 'd MMM yyyy'}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
-          <input class="main" type="text" [matDatepicker]="picker" [value]="this.joinDate.value">
+          <input class="main" type="text" [matDatepicker]="picker" formControlName="joinDate">
           <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </ng-template>

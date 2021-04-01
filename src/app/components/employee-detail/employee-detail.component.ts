@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../interfaces/employee';
 import { BranchService } from '../../services/branch/branch.service';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-employee-detail',
@@ -24,7 +25,6 @@ export class EmployeeDetailComponent implements OnInit {
   mode = 'view';
   positions: string[] = [];
   branches: string[] = [];
-  joinDate!: FormControl;
   employeeForm!: FormGroup;
 
   constructor(
@@ -40,13 +40,16 @@ export class EmployeeDetailComponent implements OnInit {
       this.employeeService.getEmployeeById(id).subscribe(e => {
         if (e) {
           this.emp = e;
-          this.emp.joinDate = new Date(this.emp.joinDate);
-          this.joinDate = new FormControl(this.emp.joinDate);
         }
 
         this.employeeForm = this.fb.group({
           name: [this.emp.name],
-          surname: [this.emp.surname]
+          surname: [this.emp.surname],
+          mobileNo: [this.emp.mobileNo],
+          salary: [this.emp.salary],
+          position: [this.emp.position],
+          branch: [this.emp.branch],
+          joinDate: [moment(this.emp.joinDate)]
         })
       });
     }
