@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../interfaces/employee';
 import { BranchService } from '../../services/branch/branch.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-detail',
@@ -25,11 +25,13 @@ export class EmployeeDetailComponent implements OnInit {
   positions: string[] = [];
   branches: string[] = [];
   joinDate!: FormControl;
+  employeeForm!: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private employeeService: EmployeeService,
-    private branchService: BranchService) { }
+    private branchService: BranchService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -41,6 +43,11 @@ export class EmployeeDetailComponent implements OnInit {
           this.emp.joinDate = new Date(this.emp.joinDate);
           this.joinDate = new FormControl(this.emp.joinDate);
         }
+
+        this.employeeForm = this.fb.group({
+          name: [this.emp.name],
+          surname: [this.emp.surname]
+        })
       });
     }
 
@@ -59,6 +66,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   onSave(): void {
     this.mode = 'view';
+    // console.log(this.employeeForm.value);
   }
 
   onCancel(): void {

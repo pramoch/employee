@@ -1,92 +1,94 @@
-<div class="top-bar">
-  <div class="middle-space"></div>
-  <ng-template [ngIf]="mode === 'view'">
-    <button class="main" (click)="onEdit()">Edit</button>
-  </ng-template>
-  <ng-template [ngIf]="mode === 'edit'">
-    <button class="main cancel" (click)="onCancel()" >Cancel</button>
-    <button class="main" (click)="onSave()">Save</button>
-  </ng-template>
-</div>
-<div class="wrapper">
-  <!-- Personal Info -->
-  <div class="section">
-    <div class="title">Personal Info</div>
-    <div class="info">
-      <div>Name</div>
-      <ng-template [ngIf]="mode === 'view'">
-        <div>{{emp.name}}</div>
-      </ng-template>
-      <ng-template [ngIf]="mode === 'edit'">
-        <input class="main" type="text" value="{{emp.name}}">
-      </ng-template>
+<form [formGroup]="employeeForm">
+  <div class="top-bar">
+    <div class="middle-space"></div>
+    <ng-template [ngIf]="mode === 'view'">
+      <button class="main" (click)="onEdit()">Edit</button>
+    </ng-template>
+    <ng-template [ngIf]="mode === 'edit'">
+      <button class="main cancel" (click)="onCancel()" >Cancel</button>
+      <button class="main" (click)="onSave()">Save</button>
+    </ng-template>
+  </div>
+  <div class="wrapper">
+    <!-- Personal Info -->
+    <div class="section">
+      <div class="title">Personal Info</div>
+      <div class="info">
+        <div>Name</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{emp.name}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit'">
+          <input class="main" type="text" formControlName="name">
+        </ng-template>
+      </div>
+      <div class="info">
+        <div>Surname</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{emp.surname}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit'">
+          <input class="main" type="text" formControlName="surname">
+        </ng-template>
+      </div>
+      <div class="info">
+        <div>Mobile No.</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{emp.mobileNo | phone}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit'">
+          <input class="main" type="text" value="{{emp.mobileNo}}">
+        </ng-template>
+      </div>
     </div>
-    <div class="info">
-      <div>Surname</div>
-      <ng-template [ngIf]="mode === 'view'">
-        <div>{{emp.surname}}</div>
-      </ng-template>
-      <ng-template [ngIf]="mode === 'edit'">
-        <input class="main" type="text" value="{{emp.surname}}">
-      </ng-template>
-    </div>
-    <div class="info">
-      <div>Mobile No.</div>
-      <ng-template [ngIf]="mode === 'view'">
-        <div>{{emp.mobileNo | phone}}</div>
-      </ng-template>
-      <ng-template [ngIf]="mode === 'edit'">
-        <input class="main" type="text" value="{{emp.mobileNo}}">
-      </ng-template>
+    <!-- Working Info -->
+    <div class="section">
+      <div class="title">Working Info</div>
+      <div class="info">
+        <div>Employee ID</div><div>{{emp.id}}</div>
+      </div>
+      <div class="info">
+        <div>Position</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{emp.position}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit'">
+          <select class="main">
+            <option *ngFor="let p of positions" value="{{p}}" [selected]="p === emp.position">{{p}}</option>
+          </select>
+        </ng-template>
+      </div>
+      <div class="info">
+        <div>Branch</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{emp.branch}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit'">
+          <select class="main">
+            <option *ngFor="let b of branches" value="{{b}}" [selected]="b === emp.branch">{{b}}</option>
+          </select>
+        </ng-template>
+      </div>
+      <div class="info">
+        <div>Salary</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{emp.salary | number}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit'">
+          <input class="main" type="text" value="{{emp.salary}}">
+        </ng-template>
+      </div>
+      <div class="info">
+        <div>Joined date</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit'">
+          <input class="main" type="text" [matDatepicker]="picker" [value]="this.joinDate.value">
+          <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </ng-template>
+      </div>
     </div>
   </div>
-  <!-- Working Info -->
-  <div class="section">
-    <div class="title">Working Info</div>
-    <div class="info">
-      <div>Employee ID</div><div>{{emp.id}}</div>
-    </div>
-    <div class="info">
-      <div>Position</div>
-      <ng-template [ngIf]="mode === 'view'">
-        <div>{{emp.position}}</div>
-      </ng-template>
-      <ng-template [ngIf]="mode === 'edit'">
-        <select class="main">
-          <option *ngFor="let p of positions" value="{{p}}" [selected]="p === emp.position">{{p}}</option>
-        </select>
-      </ng-template>
-    </div>
-    <div class="info">
-      <div>Branch</div>
-      <ng-template [ngIf]="mode === 'view'">
-        <div>{{emp.branch}}</div>
-      </ng-template>
-      <ng-template [ngIf]="mode === 'edit'">
-        <select class="main">
-          <option *ngFor="let b of branches" value="{{b}}" [selected]="b === emp.branch">{{b}}</option>
-        </select>
-      </ng-template>
-    </div>
-    <div class="info">
-      <div>Salary</div>
-      <ng-template [ngIf]="mode === 'view'">
-        <div>{{emp.salary | number}}</div>
-      </ng-template>
-      <ng-template [ngIf]="mode === 'edit'">
-        <input class="main" type="text" value="{{emp.salary}}">
-      </ng-template>
-    </div>
-    <div class="info">
-      <div>Joined date</div>
-      <ng-template [ngIf]="mode === 'view'">
-        <div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>
-      </ng-template>
-      <ng-template [ngIf]="mode === 'edit'">
-        <input class="main" type="text" [matDatepicker]="picker" [value]="this.joinDate.value">
-        <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </ng-template>
-    </div>
-  </div>
-</div>
+</form>
