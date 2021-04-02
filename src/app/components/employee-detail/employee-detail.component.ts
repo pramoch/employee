@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../interfaces/employee';
 import { BranchService } from '../../services/branch/branch.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
@@ -43,13 +43,13 @@ export class EmployeeDetailComponent implements OnInit {
         }
 
         this.employeeForm = this.fb.group({
-          name: [this.emp.name],
-          surname: [this.emp.surname],
-          mobileNo: [this.emp.mobileNo],
-          salary: [this.emp.salary],
+          name: [this.emp.name, Validators.required],
+          surname: [this.emp.surname, Validators.required],
+          mobileNo: [this.emp.mobileNo, Validators.required],
+          salary: [this.emp.salary, Validators.required],
           position: [this.emp.position],
           branch: [this.emp.branch],
-          joinDate: [moment(this.emp.joinDate)]
+          joinDate: [moment(this.emp.joinDate), Validators.required]
         })
       });
     }
