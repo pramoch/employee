@@ -41,6 +41,11 @@ button.main {
     color: #445DBF;
     border: 1px solid #445DBF;
   }
+
+  &[disabled] {
+    color: rgba(0,0,0,.26);
+    background-color: rgba(0,0,0,.12);
+  }
 }
 
 input.main {
@@ -53,6 +58,10 @@ input.main {
 
   &:focus {
     border-color: #445DBF;
+  }
+
+  &.ng-invalid {
+    border-color: red;
   }
 }
 
