@@ -48,8 +48,10 @@ export class EmployeesComponent implements OnInit {
 
   private updateEmployees(): void {
     this.employeeService.getEmployees(this.term, this.pageSize, this.pageIndex * this.pageSize).subscribe(result => {
-      this.employees = result.employees;
-      this.totalEmployees = result.total;
+      if (result.status.success && result.data) {
+        this.employees = result.data.employees;
+        this.totalEmployees = result.data.total;
+      }
     });
   }
 }

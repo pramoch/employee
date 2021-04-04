@@ -9,17 +9,22 @@ export interface Employee {
   branch: string;
 }
 
-export interface EmployeeResult {
-  employees: Employee[];
-  total: number;
+export interface Status {
+  success: boolean;
+  desc: string;
 }
 
-export interface Result {
-  status: {
-    success: boolean;
-    desc: string;
-  };
-  data: {
+export interface EmployeesResult {
+  status: Status;
+  data?: {
+    employees: Employee[];
+    total: number;
+  }
+}
+
+export interface EmployeeResult {
+  status: Status;
+  data?: {
     employee: Employee
   };
 }

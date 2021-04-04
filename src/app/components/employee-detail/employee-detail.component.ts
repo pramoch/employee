@@ -38,8 +38,14 @@ export class EmployeeDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
 
     if (this.id) {
-      this.employeeService.getEmployeeById(this.id).subscribe(e => {
-        this.setEmployee(e);
+      this.employeeService.getEmployeeById(this.id).subscribe(result => {
+        if (result.status.success && result.data) {
+          this.setEmployee(result.data.employee);
+        }
+        else {
+          this.setEmployee(null);
+          console.log(result.status.desc);
+        }
       });
     }
 
@@ -88,7 +94,7 @@ export class EmployeeDetailComponent implements OnInit {
       this.employeeService
         .updateEmployeeById(this.id, updatedEmployee)
         .subscribe(result => {
-          if (result.status.success) {
+          if (result.status.success && result.data) {
             this.setEmployee(result.data.employee);
             this.mode = 'view';
           }

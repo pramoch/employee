@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Employee, EmployeeResult, Result } from '../../interfaces/employee';
+import { Employee, EmployeesResult, EmployeeResult } from '../../interfaces/employee';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -198,7 +198,7 @@ export class EmployeeService {
     return result;
   }
 
-  getEmployees(term: string, limit: number, offset: number = 0): Observable<EmployeeResult> {
+  getEmployees(term: string, limit: number, offset: number = 0): Observable<EmployeesResult> {
     let result: Employee[];
     let limitedResult: Employee[];
 
@@ -212,16 +212,42 @@ export class EmployeeService {
     limitedResult = result.slice(offset, offset + limit);
 
     return of({
-      employees: limitedResult,
-      total: result.length
-    });
+      status: {
+        success: true,
+        desc: 'Success'
+      },
+      data: {
+        employees: limitedResult,
+        total: result.length
+      }
+    })
   }
 
-  getEmployeeById(id: string): Observable<Employee | null> {
-    return of(this.employees.find(e => e.id === id) || null);
+  getEmployeeById(id: string): Observable<EmployeeResult> {
+    const emp = this.employees.find(e => e.id === id);
+
+    if (emp) {
+      return of({
+        status: {
+          success: true,
+          desc: 'success'
+        },
+        data: {
+          employee: emp
+        }
+      });
+    }
+    else {
+      return of({
+        status: {
+          success: false,
+          desc: 'Employee not found'
+        }
+      });
+    };
   }
 
-  updateEmployeeById(id: string, emp: Employee): Observable<Result> {
+  updateEmployeeById(id: string, emp: Employee): Observable<EmployeeResult> {
     const index = this.employees.findIndex(e => e.id === id);
     this.employees[index] = emp;
 
