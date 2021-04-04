@@ -16,7 +16,7 @@
       <div class="info">
         <div>Name</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{employeeForm.value.name}}</div>
+          <div>{{emp.name}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <input class="main" type="text" formControlName="name">
@@ -25,7 +25,7 @@
       <div class="info">
         <div>Surname</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{employeeForm.value.surname}}</div>
+          <div>{{emp.surname}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <input class="main" type="text" formControlName="surname">
@@ -34,7 +34,7 @@
       <div class="info">
         <div>Mobile No.</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{employeeForm.value.mobileNo | phone}}</div>
+          <div>{{emp.mobileNo | phone}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <input class="main" type="text" formControlName="mobileNo">
@@ -50,7 +50,7 @@
       <div class="info">
         <div>Position</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{employeeForm.value.position}}</div>
+          <div>{{emp.position}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <select class="main" formControlName="position">
@@ -61,7 +61,7 @@
       <div class="info">
         <div>Branch</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{employeeForm.value.branch}}</div>
+          <div>{{emp.branch}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <select class="main" formControlName="branch">
@@ -72,7 +72,7 @@
       <div class="info">
         <div>Salary</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{employeeForm.value.salary | number}}</div>
+          <div>{{emp.salary | number}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <input class="main" type="number" formControlName="salary">
@@ -81,7 +81,7 @@
       <div class="info">
         <div>Joined date</div>
         <ng-template [ngIf]="mode === 'view'">
-          <div>{{employeeForm.value.joinDate | date: 'd MMM yyyy'}}</div>
+          <div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit'">
           <input class="main" type="text" [matDatepicker]="picker" formControlName="joinDate">

@@ -13,3 +13,13 @@ export interface EmployeeResult {
   employees: Employee[];
   total: number;
 }
+
+export interface Result {
+  status: {
+    success: boolean;
+    desc: string;
+  };
+  data: {
+    employee: Employee
+  };
+}

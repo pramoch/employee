@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Employee, EmployeeResult } from '../../interfaces/employee';
+import { Employee, EmployeeResult, Result } from '../../interfaces/employee';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -219,6 +219,21 @@ export class EmployeeService {
 
   getEmployeeById(id: string): Observable<Employee | null> {
     return of(this.employees.find(e => e.id === id) || null);
+  }
+
+  updateEmployeeById(id: string, emp: Employee): Observable<Result> {
+    const index = this.employees.findIndex(e => e.id === id);
+    this.employees[index] = emp;
+
+    return of({
+      status: {
+        success: true,
+        desc: 'success'
+      },
+      data: {
+        employee: emp
+      }
+    });
   }
 
   getPositions(): Observable<string[]> {

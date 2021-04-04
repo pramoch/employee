@@ -26,6 +26,7 @@ export class EmployeeDetailComponent implements OnInit {
   positions: string[] = [];
   branches: string[] = [];
   employeeForm!: FormGroup;
+  id: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,23 +35,11 @@ export class EmployeeDetailComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
 
-    if (id) {
-      this.employeeService.getEmployeeById(id).subscribe(e => {
-        if (e) {
-          this.emp = e;
-        }
-
-        this.employeeForm = this.fb.group({
-          name: [this.emp.name],
-          surname: [this.emp.surname],
-          mobileNo: [this.emp.mobileNo],
-          salary: [this.emp.salary],
-          position: [this.emp.position],
-          branch: [this.emp.branch],
-          joinDate: [moment(this.emp.joinDate)]
-        })
+    if (this.id) {
+      this.employeeService.getEmployeeById(this.id).subscribe(e => {
+        this.setEmployee(e);
       });
     }
 
@@ -63,13 +52,48 @@ export class EmployeeDetailComponent implements OnInit {
     });
   }
 
+  setEmployee(emp: Employee | null): void {
+    if (emp) {
+      this.emp = emp;
+    }
+
+    this.employeeForm = this.fb.group({
+      name: [this.emp.name],
+      surname: [this.emp.surname],
+      mobileNo: [this.emp.mobileNo],
+      salary: [this.emp.salary],
+      position: [this.emp.position],
+      branch: [this.emp.branch],
+      joinDate: [moment(this.emp.joinDate)]
+    });
+  }
+
   onEdit(): void {
     this.mode = 'edit';
   }
 
   onSave(): void {
-    this.mode = 'view';
-    // console.log(this.employeeForm.value);
+    if (this.id) {
+      const updatedEmployee = {
+        id: this.id,
+        name: this.employeeForm.value.name,
+        surname: this.employeeForm.value.surname,
+        mobileNo: this.employeeForm.value.mobileNo,
+        salary: this.employeeForm.value.salary,
+        joinDate: this.employeeForm.value.joinDate.format('YYYY-MM-DD'),
+        position: this.employeeForm.value.position,
+        branch:  this.employeeForm.value.branch
+      };
+
+      this.employeeService
+        .updateEmployeeById(this.id, updatedEmployee)
+        .subscribe(result => {
+          if (result.status.success) {
+            this.setEmployee(result.data.employee);
+            this.mode = 'view';
+          }
+        });
+    }
   }
 
   onCancel(): void {
