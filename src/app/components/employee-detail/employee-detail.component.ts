@@ -5,6 +5,8 @@ import { Employee } from '../../interfaces/employee';
 import { BranchService } from '../../services/branch/branch.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent, DialogData } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-employee-detail',
@@ -32,7 +34,9 @@ export class EmployeeDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private employeeService: EmployeeService,
     private branchService: BranchService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -76,6 +80,10 @@ export class EmployeeDetailComponent implements OnInit {
 
   onEdit(): void {
     this.mode = 'edit';
+    // this.dialog.open(DialogComponent, {
+    //   // width: '250px',
+    //   data: {type: 'confirm', msg: 'Changes you made so far will not be saved.'}
+    // });
   }
 
   onSave(): void {

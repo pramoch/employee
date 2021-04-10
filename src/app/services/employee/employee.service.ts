@@ -220,7 +220,7 @@ export class EmployeeService {
         employees: limitedResult,
         total: result.length
       }
-    })
+    });
   }
 
   getEmployeeById(id: string): Observable<EmployeeResult> {
@@ -244,7 +244,7 @@ export class EmployeeService {
           desc: 'Employee not found'
         }
       });
-    };
+    }
   }
 
   updateEmployeeById(id: string, emp: Employee): Observable<EmployeeResult> {

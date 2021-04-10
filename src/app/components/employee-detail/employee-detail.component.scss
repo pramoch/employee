@@ -31,7 +31,7 @@
     flex: 0 0 150px;
   }
 
-  div: {
+  div {
     flex: 1 1 auto;
   }
 
@@ -39,10 +39,6 @@
     color: red;
     padding-left: 8px;
   }
-}
-
-button.cancel {
-  margin-right: 8px;
 }
 
 mat-datepicker-toggle {

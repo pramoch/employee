@@ -19,7 +19,7 @@ export interface EmployeesResult {
   data?: {
     employees: Employee[];
     total: number;
-  }
+  };
 }
 
 export interface EmployeeResult {

@@ -14,6 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Components
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { BranchesComponent } from './components/branches/branches.component';
 import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 import { PhonePipe } from './pipes/phone/phone.pipe';
 import { SalesComponent } from './components/sales/sales.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { SalesComponent } from './components/sales/sales.component';
     EmployeesComponent,
     BranchesComponent,
     EmployeeDetailComponent,
-    SalesComponent
+    SalesComponent,
+    DialogComponent
   ],
   imports: [
     // Angular
@@ -48,7 +51,8 @@ import { SalesComponent } from './components/sales/sales.component';
     MatIconModule,
     MatPaginatorModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatDialogModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }

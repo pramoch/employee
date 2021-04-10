@@ -46,6 +46,10 @@ button.main {
     color: rgba(0,0,0,.26);
     background-color: rgba(0,0,0,.12);
   }
+
+  &:not(:first-of-type) {
+    margin-left: 8px;
+  }
 }
 
 input.main {
