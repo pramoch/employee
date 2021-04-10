@@ -103,6 +103,7 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   onCancel(): void {
+    this.setEmployee(this.emp);
     this.mode = 'view';
   }
 }
