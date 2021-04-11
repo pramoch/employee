@@ -14,7 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 // Components
 import { AppComponent } from './app.component';
@@ -55,7 +55,11 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatDialogModule
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {
+      disableClose: true,
+      hasBackdrop: true
+    }}
   ],
   bootstrap: [AppComponent]
 })

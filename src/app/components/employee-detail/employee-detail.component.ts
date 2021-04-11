@@ -6,7 +6,7 @@ import { BranchService } from '../../services/branch/branch.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent, DialogData } from '../dialog/dialog.component';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-employee-detail',
@@ -80,10 +80,6 @@ export class EmployeeDetailComponent implements OnInit {
 
   onEdit(): void {
     this.mode = 'edit';
-    // this.dialog.open(DialogComponent, {
-    //   // width: '250px',
-    //   data: {type: 'confirm', msg: 'Changes you made so far will not be saved.'}
-    // });
   }
 
   onSave(): void {
@@ -111,7 +107,20 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.setEmployee(this.emp);
-    this.mode = 'view';
+    if (this.employeeForm.dirty) {
+      const dialogRef = this.dialog.open(DialogComponent, {
+        data: {type: 'confirm', msg: 'Changes you made so far will not be saved.'}
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.setEmployee(this.emp);
+          this.mode = 'view';
+        }
+      });
+    }
+    else {
+      this.mode = 'view';
+    }
   }
 }
