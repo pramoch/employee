@@ -221,7 +221,7 @@ export class EmployeeService {
         employees: limitedResult,
         total: result.length
       }
-    }).pipe(delay(500));
+    }).pipe(delay(300));
   }
 
   getEmployeeById(id: string): Observable<EmployeeResult> {
@@ -236,7 +236,7 @@ export class EmployeeService {
         data: {
           employee: emp
         }
-      }).pipe(delay(500));
+      }).pipe(delay(300));
     }
     else {
       return of({
@@ -260,7 +260,7 @@ export class EmployeeService {
       data: {
         employee: emp
       }
-    }).pipe(delay(500));
+    }).pipe(delay(300));
   }
 
   getPositions(): Observable<string[]> {
