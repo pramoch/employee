@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Employee, EmployeesResult, EmployeeResult } from '../../interfaces/employee';
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -220,7 +221,7 @@ export class EmployeeService {
         employees: limitedResult,
         total: result.length
       }
-    });
+    }).pipe(delay(500));
   }
 
   getEmployeeById(id: string): Observable<EmployeeResult> {
@@ -235,7 +236,7 @@ export class EmployeeService {
         data: {
           employee: emp
         }
-      });
+      }).pipe(delay(500));
     }
     else {
       return of({
@@ -259,7 +260,7 @@ export class EmployeeService {
       data: {
         employee: emp
       }
-    });
+    }).pipe(delay(500));
   }
 
   getPositions(): Observable<string[]> {
