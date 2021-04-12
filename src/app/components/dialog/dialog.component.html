@@ -1,10 +1,10 @@
 <div class="dialog-wrapper">
-  <div class="title">Quit editing?</div>
+  <div class="title">{{ data.title }}</div>
   <mat-dialog-content>
     {{ data.msg }}
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button class="main cancel" mat-dialog-close>Keep editing</button>
-    <button class="main" [mat-dialog-close]="true">Quit</button>
+    <button class="main cancel" mat-dialog-close>{{ data.cancelText }}</button>
+    <button class="main" [mat-dialog-close]="true">{{ data.confirmText }}</button>
   </mat-dialog-actions>
 </div>

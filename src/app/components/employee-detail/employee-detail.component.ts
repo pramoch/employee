@@ -5,8 +5,7 @@ import { Employee } from '../../interfaces/employee';
 import { BranchService } from '../../services/branch/branch.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogService } from '../../services/dialog/dialog.service';
 
 @Component({
   selector: 'app-employee-detail',
@@ -35,7 +34,7 @@ export class EmployeeDetailComponent implements OnInit {
     private employeeService: EmployeeService,
     private branchService: BranchService,
     private fb: FormBuilder,
-    public dialog: MatDialog
+    private dialog: DialogService
   ) { }
 
   ngOnInit(): void {
@@ -108,11 +107,12 @@ export class EmployeeDetailComponent implements OnInit {
 
   onCancel(): void {
     if (this.employeeForm.dirty) {
-      const dialogRef = this.dialog.open(DialogComponent, {
-        data: {type: 'confirm', msg: 'Changes you made so far will not be saved.'}
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
+      this.dialog.showConfirm({
+        title: 'Quit editing?',
+        msg: 'Changes you made so far will not be saved.',
+        confirmText: 'Quit',
+        cancelText: 'Keep editing'
+      }).subscribe(result => {
         if (result) {
           this.setEmployee(this.emp);
           this.mode = 'view';
