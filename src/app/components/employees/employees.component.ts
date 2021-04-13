@@ -4,6 +4,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../interfaces/employee';
 import { PageEvent } from '@angular/material/paginator';
+import { DialogService } from '../../services/dialog/dialog.service';
 
 @Component({
   selector: 'app-employees',
@@ -18,7 +19,10 @@ export class EmployeesComponent implements OnInit {
   totalEmployees = 0;
   term = '';
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(
+    private employeeService: EmployeeService,
+    private dialog: DialogService
+  ) { }
 
   ngOnInit(): void {
     this.searchTerms.pipe(
@@ -47,7 +51,11 @@ export class EmployeesComponent implements OnInit {
   }
 
   private updateEmployees(): void {
+    this.dialog.showLoading();
+
     this.employeeService.getEmployees(this.term, this.pageSize, this.pageIndex * this.pageSize).subscribe(result => {
+      this.dialog.hideLoading();
+
       if (result.status.success && result.data) {
         this.employees = result.data.employees;
         this.totalEmployees = result.data.total;

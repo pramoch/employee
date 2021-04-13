@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeeService } from '../../services/employee/employee.service';
-import { Employee } from '../../interfaces/employee';
-import { BranchService } from '../../services/branch/branch.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { Employee } from '../../interfaces/employee';
 import * as moment from 'moment';
+import { forkJoin } from 'rxjs';
+
+// Services
+import { EmployeeService } from '../../services/employee/employee.service';
+import { BranchService } from '../../services/branch/branch.service';
 import { DialogService } from '../../services/dialog/dialog.service';
+
 
 @Component({
   selector: 'app-employee-detail',
@@ -44,7 +49,12 @@ export class EmployeeDetailComponent implements OnInit {
     if (this.id) {
       this.dialog.showLoading();
 
-      this.employeeService.getEmployeeById(this.id).subscribe(result => {
+      forkJoin({
+        result: this.employeeService.getEmployeeById(this.id),
+        positions: this.employeeService.getPositions(),
+        branches: this.branchService.getBranches()
+      })
+      .subscribe(({result, positions, branches}) => {
         this.dialog.hideLoading();
 
         if (result.status.success && result.data) {
@@ -61,16 +71,11 @@ export class EmployeeDetailComponent implements OnInit {
             this.router.navigate(['employees']);
           });
         }
+
+        this.positions = positions;
+        this.branches = branches;
       });
     }
-
-    this.employeeService.getPositions().subscribe(p => {
-      this.positions = p;
-    });
-
-    this.branchService.getBranches().subscribe(b => {
-      this.branches = b;
-    });
   }
 
   setEmployee(emp: Employee | null): void {
@@ -106,9 +111,13 @@ export class EmployeeDetailComponent implements OnInit {
         branch:  this.employeeForm.value.branch
       };
 
+      this.dialog.showLoading();
+
       this.employeeService
         .updateEmployeeById(this.id, updatedEmployee)
         .subscribe(result => {
+          this.dialog.hideLoading();
+
           if (result.status.success && result.data) {
             this.setEmployee(result.data.employee);
             this.mode = 'view';
