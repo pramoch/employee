@@ -17,4 +17,12 @@ export class DialogService {
 
     return dialogRef.afterClosed();
   }
+
+  showError(data: DialogData): Observable<any> {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data
+    });
+
+    return dialogRef.afterClosed();
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../interfaces/employee';
 import { BranchService } from '../../services/branch/branch.service';
@@ -31,6 +31,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private employeeService: EmployeeService,
     private branchService: BranchService,
     private fb: FormBuilder,
@@ -47,7 +48,14 @@ export class EmployeeDetailComponent implements OnInit {
         }
         else {
           this.setEmployee(null);
-          console.log(result.status.desc);
+
+          this.dialog.showConfirm({
+            title: 'Error',
+            msg: result.status.desc,
+            confirmText: 'OK'
+          }).subscribe(() => {
+            this.router.navigate(['employees']);
+          });
         }
       });
     }
@@ -64,17 +72,17 @@ export class EmployeeDetailComponent implements OnInit {
   setEmployee(emp: Employee | null): void {
     if (emp) {
       this.emp = emp;
-    }
 
-    this.employeeForm = this.fb.group({
-      name: [this.emp.name, Validators.required],
-      surname: [this.emp.surname, Validators.required],
-      mobileNo: [this.emp.mobileNo, Validators.required],
-      salary: [this.emp.salary, Validators.required],
-      position: [this.emp.position],
-      branch: [this.emp.branch],
-      joinDate: [moment(this.emp.joinDate), Validators.required]
-    });
+      this.employeeForm = this.fb.group({
+        name: [this.emp.name, Validators.required],
+        surname: [this.emp.surname, Validators.required],
+        mobileNo: [this.emp.mobileNo, Validators.required],
+        salary: [this.emp.salary, Validators.required],
+        position: [this.emp.position],
+        branch: [this.emp.branch],
+        joinDate: [moment(this.emp.joinDate), Validators.required]
+      });
+    }
   }
 
   onEdit(): void {
