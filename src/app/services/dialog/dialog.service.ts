@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { DialogComponent, DialogData } from '../../components/dialog/dialog.component';
 
@@ -7,6 +7,7 @@ import { DialogComponent, DialogData } from '../../components/dialog/dialog.comp
   providedIn: 'root'
 })
 export class DialogService {
+  loadingRef!: MatDialogRef<DialogComponent> | null;
 
   constructor(private dialog: MatDialog) { }
 
@@ -24,5 +25,20 @@ export class DialogService {
     });
 
     return dialogRef.afterClosed();
+  }
+
+  showLoading(): void {
+    this.loadingRef = this.dialog.open(DialogComponent, {
+      data: {
+        isLoading: true
+      }
+    });
+  }
+
+  hideLoading(): void {
+    if (this.loadingRef) {
+      this.loadingRef.close();
+      this.loadingRef = null;
+    }
   }
 }

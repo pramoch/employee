@@ -6,6 +6,7 @@ export interface DialogData {
   msg: string;
   confirmText: string;
   cancelText?: string;
+  isLoading?: boolean;
 }
 
 @Component({

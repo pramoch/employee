@@ -42,7 +42,11 @@ export class EmployeeDetailComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
 
     if (this.id) {
+      this.dialog.showLoading();
+
       this.employeeService.getEmployeeById(this.id).subscribe(result => {
+        this.dialog.hideLoading();
+
         if (result.status.success && result.data) {
           this.setEmployee(result.data.employee);
         }
