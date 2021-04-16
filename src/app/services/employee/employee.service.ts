@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Employee, EmployeesResult, EmployeeResult } from '../../interfaces/employee';
+import { Employee, EmployeesResult, EmployeeResult, PositionsResult } from '../../interfaces/employee';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -263,7 +263,15 @@ export class EmployeeService {
     }).pipe(delay(300));
   }
 
-  getPositions(): Observable<string[]> {
-    return of(this.positions);
+  getPositions(): Observable<PositionsResult> {
+    return of({
+      status: {
+        success: true,
+        desc: 'success'
+      },
+      data: {
+        positions: this.positions
+      }
+    }).pipe(delay(300));
   }
 }

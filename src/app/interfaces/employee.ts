@@ -1,3 +1,5 @@
+import { Status } from './common';
+
 export interface Employee {
   id: string;
   name: string;
@@ -7,11 +9,6 @@ export interface Employee {
   joinDate: string | Date;
   position: string;
   branch: string;
-}
-
-export interface Status {
-  success: boolean;
-  desc: string;
 }
 
 export interface EmployeesResult {
@@ -26,5 +23,12 @@ export interface EmployeeResult {
   status: Status;
   data?: {
     employee: Employee
+  };
+}
+
+export interface PositionsResult {
+  status: Status;
+  data?: {
+    positions: string[]
   };
 }

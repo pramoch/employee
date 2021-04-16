@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+import { BranchesResult } from '../../interfaces/branch';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,15 @@ export class BranchService {
 
   constructor() { }
 
-  getBranches(): Observable<string[]> {
-    return of(this.branches);
+  getBranches(): Observable<BranchesResult> {
+    return of({
+      status: {
+        success: true,
+        desc: 'success'
+      },
+      data: {
+        branches: this.branches
+      }
+    }).pipe(delay(300));
   }
 }

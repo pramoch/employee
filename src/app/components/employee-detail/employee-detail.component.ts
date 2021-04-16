@@ -50,30 +50,38 @@ export class EmployeeDetailComponent implements OnInit {
       this.dialog.showLoading();
 
       forkJoin({
-        result: this.employeeService.getEmployeeById(this.id),
-        positions: this.employeeService.getPositions(),
-        branches: this.branchService.getBranches()
+        employeeResult: this.employeeService.getEmployeeById(this.id),
+        positionsResult: this.employeeService.getPositions(),
+        branchesResult: this.branchService.getBranches()
       })
-      .subscribe(({result, positions, branches}) => {
+      .subscribe(({employeeResult, positionsResult, branchesResult}) => {
         this.dialog.hideLoading();
 
-        if (result.status.success && result.data) {
-          this.setEmployee(result.data.employee);
+        // Employee
+        if (employeeResult.status.success && employeeResult.data) {
+          this.setEmployee(employeeResult.data.employee);
         }
         else {
           this.setEmployee(null);
 
           this.dialog.showConfirm({
             title: 'Error',
-            msg: result.status.desc,
+            msg: employeeResult.status.desc,
             confirmText: 'OK'
           }).subscribe(() => {
             this.router.navigate(['employees']);
           });
         }
 
-        this.positions = positions;
-        this.branches = branches;
+        // Positions
+        if (positionsResult.status.success && positionsResult.data) {
+          this.positions = positionsResult.data.positions;
+        }
+
+        // Branches
+        if (branchesResult.status.success && branchesResult.data) {
+          this.branches = branchesResult.data.branches;
+        }
       });
     }
   }
