@@ -1,21 +1,10 @@
 .search {
-  text-align: right;
   margin-bottom: 16px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
 
   input {
-    font-family: inherit;
-    color: inherit;
-    font-size: 14px;
-    padding: 8px;
-    width: 300px;
-    border: 1px solid rgba(0,0,0,.12);
-  }
-
-  input::placeholder {
-    color: rgba(0,0,0,.50);
+    flex: 0 1 300px;
   }
 
   mat-icon {
@@ -26,6 +15,10 @@
     font-size: 20px;
     height: 20px;
     width: 20px;
+  }
+
+  button {
+    flex: 0 0 auto;
   }
 }
 
