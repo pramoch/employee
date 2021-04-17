@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { EmployeeService } from '../../services/employee/employee.service';
@@ -18,6 +18,7 @@ export class EmployeesComponent implements OnInit {
   pageSize = 10;
   totalEmployees = 0;
   term = '';
+  @ViewChild('searchBox') input!: ElementRef;
 
   constructor(
     private employeeService: EmployeeService,
@@ -27,7 +28,7 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
+      debounceTime(500),
 
       // ignore new term if same as previous term
       distinctUntilChanged()
@@ -60,6 +61,8 @@ export class EmployeesComponent implements OnInit {
         this.employees = result.data.employees;
         this.totalEmployees = result.data.total;
       }
+
+      this.input.nativeElement.focus();
     });
   }
 }
