@@ -46,7 +46,11 @@ export class EmployeeDetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
 
-    if (this.id) {
+    if (this.id === 'add') {
+      this.mode = 'add';
+      this.setEmployee(this.emp);
+    }
+    else if (this.id) {
       this.dialog.showLoading();
 
       forkJoin({
@@ -62,8 +66,6 @@ export class EmployeeDetailComponent implements OnInit {
           this.setEmployee(employeeResult.data.employee);
         }
         else {
-          this.setEmployee(null);
-
           this.dialog.showConfirm({
             title: 'Error',
             msg: employeeResult.status.desc,
@@ -89,17 +91,17 @@ export class EmployeeDetailComponent implements OnInit {
   setEmployee(emp: Employee | null): void {
     if (emp) {
       this.emp = emp;
-
-      this.employeeForm = this.fb.group({
-        name: [this.emp.name, Validators.required],
-        surname: [this.emp.surname, Validators.required],
-        mobileNo: [this.emp.mobileNo, Validators.required],
-        salary: [this.emp.salary, Validators.required],
-        position: [this.emp.position],
-        branch: [this.emp.branch],
-        joinDate: [moment(this.emp.joinDate), Validators.required]
-      });
     }
+
+    this.employeeForm = this.fb.group({
+      name: [this.emp.name, Validators.required],
+      surname: [this.emp.surname, Validators.required],
+      mobileNo: [this.emp.mobileNo, Validators.required],
+      salary: [this.emp.salary, Validators.required],
+      position: [this.emp.position],
+      branch: [this.emp.branch],
+      joinDate: [moment(this.emp.joinDate), Validators.required]
+    });
   }
 
   onEdit(): void {

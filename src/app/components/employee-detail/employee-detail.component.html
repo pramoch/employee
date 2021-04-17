@@ -5,7 +5,7 @@
     <ng-template [ngIf]="mode === 'view'">
       <button class="main" (click)="onEdit()">Edit</button>
     </ng-template>
-    <ng-template [ngIf]="mode === 'edit'">
+    <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
       <button class="main cancel" (click)="onCancel()" >Cancel</button>
       <button class="main" (click)="onSave()" [disabled]="!employeeForm.valid || employeeForm.pristine">Save</button>
     </ng-template>
@@ -19,7 +19,7 @@
         <ng-template [ngIf]="mode === 'view'">
           <div>{{emp.name}}</div>
         </ng-template>
-        <ng-template [ngIf]="mode === 'edit'">
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
           <input class="main" type="text" formControlName="name">
           <div class="error" *ngIf="employeeForm.controls.name.errors && employeeForm.controls.name.errors.required">
             This field is required.
@@ -31,7 +31,7 @@
         <ng-template [ngIf]="mode === 'view'">
           <div>{{emp.surname}}</div>
         </ng-template>
-        <ng-template [ngIf]="mode === 'edit'">
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
           <input class="main" type="text" formControlName="surname">
           <div class="error" *ngIf="employeeForm.controls.surname.errors && employeeForm.controls.surname.errors.required">
             This field is required.
@@ -43,7 +43,7 @@
         <ng-template [ngIf]="mode === 'view'">
           <div>{{emp.mobileNo | phone}}</div>
         </ng-template>
-        <ng-template [ngIf]="mode === 'edit'">
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
           <input class="main" type="text" formControlName="mobileNo">
           <div class="error" *ngIf="employeeForm.controls.mobileNo.errors && employeeForm.controls.mobileNo.errors.required">
             This field is required.
@@ -62,7 +62,7 @@
         <ng-template [ngIf]="mode === 'view'">
           <div>{{emp.position}}</div>
         </ng-template>
-        <ng-template [ngIf]="mode === 'edit'">
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
           <select class="main" formControlName="position">
             <option *ngFor="let p of positions" [ngValue]="p">{{p}}</option>
           </select>
@@ -73,7 +73,7 @@
         <ng-template [ngIf]="mode === 'view'">
           <div>{{emp.branch}}</div>
         </ng-template>
-        <ng-template [ngIf]="mode === 'edit'">
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
           <select class="main" formControlName="branch">
             <option *ngFor="let b of branches" [ngValue]="b">{{b}}</option>
           </select>
@@ -84,7 +84,7 @@
         <ng-template [ngIf]="mode === 'view'">
           <div>{{emp.salary | number}}</div>
         </ng-template>
-        <ng-template [ngIf]="mode === 'edit'">
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
           <input class="main" type="number" formControlName="salary">
           <div class="error" *ngIf="employeeForm.controls.salary.errors && employeeForm.controls.salary.errors.required">
             This field is required.
@@ -96,7 +96,7 @@
         <ng-template [ngIf]="mode === 'view'">
           <div>{{emp.joinDate | date: 'd MMM yyyy'}}</div>
         </ng-template>
-        <ng-template [ngIf]="mode === 'edit'">
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
           <input class="main" type="text" [matDatepicker]="picker" formControlName="joinDate">
           <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
