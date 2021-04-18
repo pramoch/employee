@@ -44,45 +44,54 @@ export class EmployeeDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.dialog.showLoading();
+
+    const obsArray: any = [
+      this.employeeService.getPositions(),
+      this.branchService.getBranches()
+    ];
+
     this.id = this.route.snapshot.paramMap.get('id');
 
-    if (this.id === 'add') {
-      this.mode = 'add';
-      this.setEmployee(this.emp);
-    }
-    else if (this.id) {
-      this.dialog.showLoading();
+    if (this.id) {
+      if (this.id === 'add') {
+        this.mode = 'add';
+        this.setEmployee(this.emp);
+      }
+      else {
+        obsArray.push(this.employeeService.getEmployeeById(this.id));
+      }
 
-      forkJoin({
-        employeeResult: this.employeeService.getEmployeeById(this.id),
-        positionsResult: this.employeeService.getPositions(),
-        branchesResult: this.branchService.getBranches()
-      })
-      .subscribe(({employeeResult, positionsResult, branchesResult}) => {
+      forkJoin(obsArray).subscribe((values) => {
         this.dialog.hideLoading();
 
-        // Employee
-        if (employeeResult.status.success && employeeResult.data) {
-          this.setEmployee(employeeResult.data.employee);
-        }
-        else {
-          this.dialog.showConfirm({
-            title: 'Error',
-            msg: employeeResult.status.desc,
-            confirmText: 'OK'
-          }).subscribe(() => {
-            this.router.navigate(['employees']);
-          });
-        }
-
         // Positions
+        const positionsResult: any = values[0];
         if (positionsResult.status.success && positionsResult.data) {
           this.positions = positionsResult.data.positions;
         }
 
         // Branches
+        const branchesResult: any = values[1];
         if (branchesResult.status.success && branchesResult.data) {
           this.branches = branchesResult.data.branches;
+        }
+
+        // Employee
+        const employeeResult: any = values[2];
+        if (employeeResult) {
+          if (employeeResult.status.success && employeeResult.data) {
+            this.setEmployee(employeeResult.data.employee);
+          }
+          else {
+            this.dialog.showConfirm({
+              title: 'Error',
+              msg: employeeResult.status.desc,
+              confirmText: 'OK'
+            }).subscribe(() => {
+              this.router.navigate(['employees']);
+            });
+          }
         }
       });
     }
