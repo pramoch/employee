@@ -68,7 +68,7 @@ input.main {
     border-color: #445DBF;
   }
 
-  &.ng-invalid {
+  &.ng-invalid.ng-touched {
     border-color: red;
   }
 }

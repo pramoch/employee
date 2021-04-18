@@ -5,9 +5,13 @@
     <ng-template [ngIf]="mode === 'view'">
       <button class="main" (click)="onEdit()">Edit</button>
     </ng-template>
-    <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
-      <button class="main cancel" (click)="onCancel()" >Cancel</button>
+    <ng-template [ngIf]="mode === 'edit'">
+      <button class="main cancel" (click)="onCancel()">Cancel</button>
       <button class="main" (click)="onSave()" [disabled]="!employeeForm.valid || employeeForm.pristine">Save</button>
+    </ng-template>
+    <ng-template [ngIf]="mode === 'add'">
+      <button class="main cancel" (click)="onCancel()">Cancel</button>
+      <button class="main" (click)="onSave()" [disabled]="!employeeForm.valid || employeeForm.pristine">Add</button>
     </ng-template>
   </div>
   <div class="wrapper">
@@ -20,8 +24,8 @@
           <div>{{emp.name}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
-          <input class="main" type="text" formControlName="name">
-          <div class="error" *ngIf="employeeForm.controls.name.errors && employeeForm.controls.name.errors.required">
+          <input class="main" type="text" formControlName="name" placeholder="Enter name">
+          <div class="error" *ngIf="employeeForm.controls.name.errors && employeeForm.controls.name.errors.required && employeeForm.controls.name.touched">
             This field is required.
           </div>
         </ng-template>
@@ -32,8 +36,8 @@
           <div>{{emp.surname}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
-          <input class="main" type="text" formControlName="surname">
-          <div class="error" *ngIf="employeeForm.controls.surname.errors && employeeForm.controls.surname.errors.required">
+          <input class="main" type="text" formControlName="surname" placeholder="Enter surname">
+          <div class="error" *ngIf="employeeForm.controls.surname.errors && employeeForm.controls.surname.errors.required && employeeForm.controls.surname.touched">
             This field is required.
           </div>
         </ng-template>
@@ -44,8 +48,8 @@
           <div>{{emp.mobileNo | phone}}</div>
         </ng-template>
         <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
-          <input class="main" type="text" formControlName="mobileNo">
-          <div class="error" *ngIf="employeeForm.controls.mobileNo.errors && employeeForm.controls.mobileNo.errors.required">
+          <input class="main" type="text" formControlName="mobileNo" placeholder="Enter mobile no." maxlength="10">
+          <div class="error" *ngIf="employeeForm.controls.mobileNo.errors && employeeForm.controls.mobileNo.errors.required && employeeForm.controls.mobileNo.touched">
             This field is required.
           </div>
         </ng-template>

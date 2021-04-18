@@ -146,12 +146,21 @@ export class EmployeeDetailComponent implements OnInit {
       }).subscribe(result => {
         if (result) {
           this.setEmployee(this.emp);
-          this.mode = 'view';
+          this.quitEdit();
         }
       });
     }
     else {
+      this.quitEdit();
+    }
+  }
+
+  quitEdit(): void {
+    if (this.mode === 'edit') {
       this.mode = 'view';
+    }
+    else if (this.mode === 'add') {
+      this.router.navigate(['employees']);
     }
   }
 }
