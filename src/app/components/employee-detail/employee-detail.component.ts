@@ -105,6 +105,8 @@ export class EmployeeDetailComponent implements OnInit {
       this.emp = emp;
     }
 
+    let momentDate = this.emp.joinDate ? moment(this.emp.joinDate) : moment().startOf('day');
+
     this.employeeForm = this.fb.group({
       name: [this.emp.name, Validators.required],
       surname: [this.emp.surname, Validators.required],
@@ -112,7 +114,7 @@ export class EmployeeDetailComponent implements OnInit {
       salary: [this.emp.salary, Validators.required],
       position: [this.emp.position || this.positions[0]],
       branch: [this.emp.branch || this.branches[0]],
-      joinDate: [moment(this.emp.joinDate), Validators.required]
+      joinDate: [momentDate, Validators.required]
     });
   }
 
