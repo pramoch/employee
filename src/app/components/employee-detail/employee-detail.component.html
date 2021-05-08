@@ -18,6 +18,7 @@
     <!-- Personal Info -->
     <div class="section">
       <div class="title">Personal Info</div>
+      <!-- Name -->
       <div class="info">
         <div>Name</div>
         <ng-template [ngIf]="mode === 'view'">
@@ -30,6 +31,7 @@
           </div>
         </ng-template>
       </div>
+      <!-- Surname -->
       <div class="info">
         <div>Surname</div>
         <ng-template [ngIf]="mode === 'view'">
@@ -42,6 +44,7 @@
           </div>
         </ng-template>
       </div>
+      <!-- Mobile No. -->
       <div class="info">
         <div>Mobile No.</div>
         <ng-template [ngIf]="mode === 'view'">
@@ -58,9 +61,11 @@
     <!-- Working Info -->
     <div class="section">
       <div class="title">Working Info</div>
+      <!-- Employee ID -->
       <div class="info">
         <div>Employee ID</div><div>{{emp.id}}</div>
       </div>
+      <!-- Position -->
       <div class="info">
         <div>Position</div>
         <ng-template [ngIf]="mode === 'view'">
@@ -72,6 +77,7 @@
           </select>
         </ng-template>
       </div>
+      <!-- Branch -->
       <div class="info">
         <div>Branch</div>
         <ng-template [ngIf]="mode === 'view'">
@@ -83,6 +89,7 @@
           </select>
         </ng-template>
       </div>
+      <!-- Salary -->
       <div class="info">
         <div>Salary</div>
         <ng-template [ngIf]="mode === 'view'">
@@ -95,6 +102,7 @@
           </div>
         </ng-template>
       </div>
+      <!-- Joined date -->
       <div class="info">
         <div>Joined date</div>
         <ng-template [ngIf]="mode === 'view'">

@@ -56,7 +56,6 @@ export class EmployeeDetailComponent implements OnInit {
     if (this.id) {
       if (this.id === 'add') {
         this.mode = 'add';
-        this.setEmployee(this.emp);
       }
       else {
         obsArray.push(this.employeeService.getEmployeeById(this.id));
@@ -93,6 +92,10 @@ export class EmployeeDetailComponent implements OnInit {
             });
           }
         }
+        else {
+          // add mode
+          this.setEmployee(this.emp);
+        }
       });
     }
   }
@@ -107,8 +110,8 @@ export class EmployeeDetailComponent implements OnInit {
       surname: [this.emp.surname, Validators.required],
       mobileNo: [this.emp.mobileNo, Validators.required],
       salary: [this.emp.salary, Validators.required],
-      position: [this.emp.position],
-      branch: [this.emp.branch],
+      position: [this.emp.position || this.positions[0]],
+      branch: [this.emp.branch || this.branches[0]],
       joinDate: [moment(this.emp.joinDate), Validators.required]
     });
   }

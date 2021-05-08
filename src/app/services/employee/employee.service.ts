@@ -181,8 +181,8 @@ export class EmployeeService {
   ];
 
   positions = [
-    'Branch Manager',
-    'Officer'
+    'Officer',
+    'Branch Manager'
   ];
 
   constructor() { }
