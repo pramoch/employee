@@ -50,4 +50,9 @@ th {
   &.sortable {
     cursor: pointer;
   }
+
+  div.header {
+    display: flex;
+    align-items: center;
+  }
 }

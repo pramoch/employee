@@ -199,7 +199,7 @@ export class EmployeeService {
     return result;
   }
 
-  getEmployees(term: string, limit: number, offset: number = 0, sortBy = ''): Observable<EmployeesResult> {
+  getEmployees(term: string, limit: number, offset: number = 0, sortBy = '', desc = false): Observable<EmployeesResult> {
     let result: Employee[];
     let limitedResult: Employee[];
 
@@ -207,7 +207,7 @@ export class EmployeeService {
       result = this.getEmployeesByName(term);
     }
     else {
-      result = this.employees;
+      result = [...this.employees];
     }
 
     if (sortBy) {
@@ -222,6 +222,10 @@ export class EmployeeService {
           return 0;
         }
       });
+    }
+
+    if (desc) {
+      result = result.reverse();
     }
 
     limitedResult = result.slice(offset, offset + limit);

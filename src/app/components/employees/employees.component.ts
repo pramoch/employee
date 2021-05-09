@@ -19,6 +19,7 @@ export class EmployeesComponent implements OnInit {
   totalEmployees = 0;
   term = '';
   sortBy = '';
+  desc = false;
   @ViewChild('searchBox') input!: ElementRef;
 
   constructor(
@@ -53,22 +54,34 @@ export class EmployeesComponent implements OnInit {
   }
 
   sort(sortBy: string): void {
-    this.sortBy = sortBy;
+    if (this.sortBy === sortBy) {
+      if (this.desc) {
+        this.sortBy = '';
+      }
+
+      this.desc = !this.desc;
+    }
+    else {
+      this.sortBy = sortBy;
+      this.desc = false;
+    }
+
     this.updateEmployees();
   }
 
   private updateEmployees(): void {
     this.dialog.showLoading();
 
-    this.employeeService.getEmployees(this.term, this.pageSize, this.pageIndex * this.pageSize, this.sortBy).subscribe(result => {
-      this.dialog.hideLoading();
+    this.employeeService.getEmployees(this.term, this.pageSize, this.pageIndex * this.pageSize, this.sortBy, this.desc)
+      .subscribe(result => {
+        this.dialog.hideLoading();
 
-      if (result.status.success && result.data) {
-        this.employees = result.data.employees;
-        this.totalEmployees = result.data.total;
-      }
+        if (result.status.success && result.data) {
+          this.employees = result.data.employees;
+          this.totalEmployees = result.data.total;
+        }
 
-      this.input.nativeElement.focus();
-    });
+        this.input.nativeElement.focus();
+      });
   }
 }
