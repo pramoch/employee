@@ -199,7 +199,7 @@ export class EmployeeService {
     return result;
   }
 
-  getEmployees(term: string, limit: number, offset: number = 0): Observable<EmployeesResult> {
+  getEmployees(term: string, limit: number, offset: number = 0, sortBy = ''): Observable<EmployeesResult> {
     let result: Employee[];
     let limitedResult: Employee[];
 
@@ -208,6 +208,20 @@ export class EmployeeService {
     }
     else {
       result = this.employees;
+    }
+
+    if (sortBy) {
+      result = result.sort((a: any, b: any) => {
+        if (a[sortBy] > b[sortBy]) {
+          return 1;
+        }
+        else if (a[sortBy] < b[sortBy]) {
+          return -1;
+        }
+        else {
+          return 0;
+        }
+      });
     }
 
     limitedResult = result.slice(offset, offset + limit);

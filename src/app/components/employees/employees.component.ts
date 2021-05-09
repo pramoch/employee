@@ -18,6 +18,7 @@ export class EmployeesComponent implements OnInit {
   pageSize = 10;
   totalEmployees = 0;
   term = '';
+  sortBy = '';
   @ViewChild('searchBox') input!: ElementRef;
 
   constructor(
@@ -51,10 +52,15 @@ export class EmployeesComponent implements OnInit {
     this.updateEmployees();
   }
 
+  sort(sortBy: string): void {
+    this.sortBy = sortBy;
+    this.updateEmployees();
+  }
+
   private updateEmployees(): void {
     this.dialog.showLoading();
 
-    this.employeeService.getEmployees(this.term, this.pageSize, this.pageIndex * this.pageSize).subscribe(result => {
+    this.employeeService.getEmployees(this.term, this.pageSize, this.pageIndex * this.pageSize, this.sortBy).subscribe(result => {
       this.dialog.hideLoading();
 
       if (result.status.success && result.data) {

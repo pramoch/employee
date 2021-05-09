@@ -7,8 +7,8 @@
   </div>
   <table>
     <tr>
-      <th>Name</th>
-      <th>Branch</th>
+      <th class="sortable" (click)="sort('name')">Name</th>
+      <th class="sortable" (click)="sort('branch')">Branch</th>
       <th>Position</th>
     </tr>
     <tr *ngFor="let e of employees" routerLink="/employees/{{e.id}}">
