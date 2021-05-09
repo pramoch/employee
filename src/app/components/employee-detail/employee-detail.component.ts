@@ -105,7 +105,7 @@ export class EmployeeDetailComponent implements OnInit {
       this.emp = emp;
     }
 
-    let momentDate = this.emp.joinDate ? moment(this.emp.joinDate) : moment().startOf('day');
+    const momentDate = this.emp.joinDate ? moment(this.emp.joinDate) : moment().startOf('day');
 
     this.employeeForm = this.fb.group({
       name: [this.emp.name, Validators.required],
@@ -176,5 +176,35 @@ export class EmployeeDetailComponent implements OnInit {
     else if (this.mode === 'add') {
       this.router.navigate(['employees']);
     }
+  }
+
+  onAdd(): void {
+    const newEmployee = {
+      id: '',
+      name: this.employeeForm.value.name,
+      surname: this.employeeForm.value.surname,
+      mobileNo: this.employeeForm.value.mobileNo,
+      salary: this.employeeForm.value.salary,
+      joinDate: this.employeeForm.value.joinDate.format('YYYY-MM-DD'),
+      position: this.employeeForm.value.position,
+      branch:  this.employeeForm.value.branch
+    };
+
+    this.dialog.showLoading();
+
+    this.employeeService
+      .addEmployee(newEmployee)
+      .subscribe(result => {
+        this.dialog.hideLoading();
+
+        if (result.status.success && result.data) {
+          const id = result.data.employee.id;
+
+          // code for reload page with the same path
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+            this.router.navigate(['employees', id]);
+          });
+        }
+      });
   }
 }

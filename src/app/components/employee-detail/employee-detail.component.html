@@ -11,7 +11,7 @@
     </ng-template>
     <ng-template [ngIf]="mode === 'add'">
       <button class="main cancel" (click)="onCancel()">Cancel</button>
-      <button class="main" (click)="onSave()" [disabled]="!employeeForm.valid || employeeForm.pristine">Add</button>
+      <button class="main" (click)="onAdd()" [disabled]="!employeeForm.valid || employeeForm.pristine">Add</button>
     </ng-template>
   </div>
   <div class="wrapper">
@@ -62,9 +62,11 @@
     <div class="section">
       <div class="title">Working Info</div>
       <!-- Employee ID -->
-      <div class="info">
-        <div>Employee ID</div><div>{{emp.id}}</div>
-      </div>
+      <ng-template [ngIf]="mode === 'view'">
+        <div class="info">
+          <div>Employee ID</div><div>{{emp.id}}</div>
+        </div>
+      </ng-template>
       <!-- Position -->
       <div class="info">
         <div>Position</div>

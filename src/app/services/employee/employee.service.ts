@@ -263,6 +263,24 @@ export class EmployeeService {
     }).pipe(delay(300));
   }
 
+  addEmployee(emp: Employee): Observable<EmployeeResult> {
+    const latestId = this.employees[this.employees.length - 1].id;
+    const newId = ((+latestId) + 1).toString();
+
+    emp.id = newId;
+    this.employees.push(emp);
+
+    return of({
+      status: {
+        success: true,
+        desc: 'success'
+      },
+      data: {
+        employee: emp
+      }
+    }).pipe(delay(300));
+  }
+
   getPositions(): Observable<PositionsResult> {
     return of({
       status: {
