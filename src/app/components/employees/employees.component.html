@@ -1,11 +1,11 @@
-<div class="table-wrapper">
-  <div class="search">
+<div>
+  <div class="action-bar">
     <input class="main" #searchBox type="text" (input)="search(searchBox.value)" placeholder="Search employee">
     <mat-icon>search</mat-icon>
     <div class="middle-space"></div>
     <button class="main" routerLink="/employees/add">Add employee</button>
   </div>
-  <table>
+  <table class="main">
     <tr>
       <th class="sortable" (click)="sort('id')">
         <div class="header">
