@@ -18,7 +18,8 @@ export class EmployeesComponent implements OnInit {
   pageSize = 10;
   totalEmployees = 0;
   term = '';
-  sortBy = '';
+  defaultSortBy = 'id';
+  sortBy = this.defaultSortBy;
   desc = false;
   @ViewChild('searchBox') input!: ElementRef;
 
@@ -56,7 +57,7 @@ export class EmployeesComponent implements OnInit {
   sort(sortBy: string): void {
     if (this.sortBy === sortBy) {
       if (this.desc) {
-        this.sortBy = '';
+        this.sortBy = this.defaultSortBy;
       }
 
       this.desc = !this.desc;

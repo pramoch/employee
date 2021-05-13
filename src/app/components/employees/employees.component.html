@@ -7,6 +7,15 @@
   </div>
   <table>
     <tr>
+      <th class="sortable" (click)="sort('id')">
+        <div class="header">
+          <div>ID</div>
+          <ng-template [ngIf]="sortBy === 'id'">
+            <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
+            <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
+          </ng-template>
+        </div>
+      </th>
       <th class="sortable" (click)="sort('name')">
         <div class="header">
           <div>Name</div>
@@ -25,13 +34,18 @@
           </ng-template>
         </div>
       </th>
-      <th>
+      <th class="sortable" (click)="sort('position')">
         <div class="header">
           <div>Position</div>
+          <ng-template [ngIf]="sortBy === 'position'">
+            <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
+            <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
+          </ng-template>
         </div>
       </th>
     </tr>
     <tr *ngFor="let e of employees" routerLink="/employees/{{e.id}}">
+      <td><a routerLink="/employees/{{e.id}}">{{e.id}}</a></td>
       <td><a routerLink="/employees/{{e.id}}">{{e.name + ' ' + e.surname}}</a></td>
       <td>{{e.branch}}</td>
       <td>{{e.position}}</td>
