@@ -87,7 +87,7 @@
         </ng-template>
         <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
           <select class="main" formControlName="branch">
-            <option *ngFor="let b of branches" [ngValue]="b">{{b}}</option>
+            <option *ngFor="let b of branches" [ngValue]="b.name">{{b.name}}</option>
           </select>
         </ng-template>
       </div>

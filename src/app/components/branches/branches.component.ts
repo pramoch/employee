@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Branch } from '../../interfaces/branch';
+
 // Services
 import { BranchService } from '../../services/branch/branch.service';
 import { DialogService } from '../../services/dialog/dialog.service';
@@ -10,7 +12,7 @@ import { DialogService } from '../../services/dialog/dialog.service';
   styleUrls: ['./branches.component.scss']
 })
 export class BranchesComponent implements OnInit {
-  branches: string[] = [];
+  branches: Branch[] = [];
 
   constructor(
     private branchService: BranchService,

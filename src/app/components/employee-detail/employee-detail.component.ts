@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Employee } from '../../interfaces/employee';
+import { Branch } from '../../interfaces/branch';
 import * as moment from 'moment';
 import { forkJoin } from 'rxjs';
 
@@ -30,7 +31,7 @@ export class EmployeeDetailComponent implements OnInit {
   };
   mode = 'view';
   positions: string[] = [];
-  branches: string[] = [];
+  branches: Branch[] = [];
   employeeForm!: FormGroup;
   id: string | null = null;
 
@@ -113,7 +114,7 @@ export class EmployeeDetailComponent implements OnInit {
       mobileNo: [this.emp.mobileNo, Validators.required],
       salary: [this.emp.salary, Validators.required],
       position: [this.emp.position || this.positions[0]],
-      branch: [this.emp.branch || this.branches[0]],
+      branch: [this.emp.branch || this.branches[0].name],
       joinDate: [momentDate, Validators.required]
     });
   }
