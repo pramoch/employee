@@ -27,6 +27,7 @@ import { EmployeeDetailComponent } from './components/employee-detail/employee-d
 import { PhonePipe } from './pipes/phone/phone.pipe';
 import { SalesComponent } from './components/sales/sales.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { BranchDetailComponent } from './components/branch-detail/branch-detail.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     BranchesComponent,
     EmployeeDetailComponent,
     SalesComponent,
-    DialogComponent
+    DialogComponent,
+    BranchDetailComponent
   ],
   imports: [
     // Angular

@@ -11,8 +11,8 @@
         Address
       </th>
     </tr>
-    <tr *ngFor="let b of branches">
-      <td>{{b.name}}</td>
+    <tr *ngFor="let b of branches" routerLink="/branches/{{b.id}}">
+      <td><a routerLink="/branches/{{b.id}}">{{b.name}}</a></td>
       <td>{{b.telNo | phone}}</td>
       <td>{{b.address}}</td>
     </tr>
