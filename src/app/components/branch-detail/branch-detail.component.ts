@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Branch } from '../../interfaces/branch';
+
+// Services
+import { BranchService } from '../../services/branch/branch.service';
+import { DialogService } from '../../services/dialog/dialog.service';
 
 @Component({
   selector: 'app-branch-detail',
@@ -8,13 +14,43 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BranchDetailComponent implements OnInit {
   id: string | null = null;
+  branch: Branch = {
+    id: '',
+    name: '',
+    address: '',
+    telNo: ''
+  };
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
+    private branchService: BranchService,
+    private dialog: DialogService
   ) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-  }
+    this.dialog.showLoading();
 
+    this.id = this.route.snapshot.paramMap.get('id');
+
+    if (this.id) {
+      this.branchService.getBranchById(this.id)
+        .subscribe(result => {
+          this.dialog.hideLoading();
+
+          if (result.status.success && result.data) {
+            this.branch = result.data.branch;
+          }
+          else {
+            this.dialog.showConfirm({
+              title: 'Error',
+              msg: result.status.desc,
+              confirmText: 'OK'
+            }).subscribe(() => {
+              this.router.navigate(['branches']);
+            });
+          }
+        });
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { BranchesResult } from '../../interfaces/branch';
+import { BranchesResult, BranchResult } from '../../interfaces/branch';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +52,29 @@ export class BranchService {
         branches: this.branches
       }
     }).pipe(delay(300));
+  }
+
+  getBranchById(id: string): Observable<BranchResult> {
+    const branch = this.branches.find(b => b.id === id);
+
+    if (branch) {
+      return of({
+        status: {
+          success: true,
+          desc: 'success'
+        },
+        data: {
+          branch
+        }
+      }).pipe(delay(300));
+    }
+    else {
+      return of({
+        status: {
+          success: false,
+          desc: 'Branch not found'
+        }
+      });
+    }
   }
 }

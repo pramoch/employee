@@ -13,3 +13,10 @@ export interface BranchesResult {
     branches: Branch[]
   };
 }
+
+export interface BranchResult {
+  status: Status;
+  data?: {
+    branch: Branch
+  };
+}

@@ -4,16 +4,16 @@
       <th>
         Branch
       </th>
-      <th>
+      <!-- <th>
         Tel.
-      </th>
+      </th> -->
       <th>
         Address
       </th>
     </tr>
     <tr *ngFor="let b of branches" routerLink="/branches/{{b.id}}">
       <td><a routerLink="/branches/{{b.id}}">{{b.name}}</a></td>
-      <td>{{b.telNo | phone}}</td>
+      <!-- <td>{{b.telNo | phone}}</td> -->
       <td>{{b.address}}</td>
     </tr>
   </table>

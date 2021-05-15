@@ -1,2 +1,20 @@
-<p>branch-detail works!</p>
-<p>id = {{this.id}}</p>
+<div class="wrapper">
+  <div class="section">
+    <div class="title">Branch Info</div>
+    <!-- Name -->
+    <div class="info">
+      <div>Name</div>
+      <div>{{branch.name}}</div>
+    </div>
+    <!-- Tel No. -->
+    <div class="info">
+      <div>Tel</div>
+      <div>{{branch.telNo | phone}}</div>
+    </div>
+    <!-- Address -->
+    <div class="info">
+      <div>Address</div>
+      <div>{{branch.address}}</div>
+    </div>
+  </div>
+</div>
