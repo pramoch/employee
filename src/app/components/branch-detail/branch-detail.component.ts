@@ -18,7 +18,8 @@ export class BranchDetailComponent implements OnInit {
     id: '',
     name: '',
     address: '',
-    telNo: ''
+    telNo: '',
+    map: ''
   };
 
   constructor(

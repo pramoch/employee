@@ -16,5 +16,12 @@
       <div>Address</div>
       <div>{{branch.address}}</div>
     </div>
+    <!-- Maps -->
+    <div class="info">
+      <div>Map</div>
+      <div>
+        <iframe [src]="branch.map | safe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
   </div>
 </div>

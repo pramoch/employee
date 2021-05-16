@@ -3,8 +3,9 @@ import { Status } from './common';
 export interface Branch {
   id: string;
   name: string;
-  address: string;
   telNo: string;
+  address: string;
+  map: string;
 }
 
 export interface BranchesResult {
