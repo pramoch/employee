@@ -16,7 +16,7 @@ export class EmployeeService {
       salary: 15000,
       joinDate: '2017-06-01',
       position: 'Officer',
-      branch: 'London'
+      branch: 'London - Oxford Street East'
     },
     {
       id: '700102',
@@ -26,7 +26,7 @@ export class EmployeeService {
       salary: 30000,
       joinDate: '2015-10-01',
       position: 'Branch Manager',
-      branch: 'London'
+      branch: 'London - Oxford Street East'
     },
     {
       id: '700103',
@@ -36,7 +36,7 @@ export class EmployeeService {
       salary: 18000,
       joinDate: '2018-02-01',
       position: 'Officer',
-      branch: 'Manchester'
+      branch: 'Manchester - Trafford Centre'
     },
     {
       id: '700104',
@@ -46,7 +46,7 @@ export class EmployeeService {
       salary: 17000,
       joinDate: '2015-07-01',
       position: 'Officer',
-      branch: 'Manchester'
+      branch: 'Manchester - Trafford Centre'
     },
     {
       id: '700105',
@@ -56,7 +56,7 @@ export class EmployeeService {
       salary: 33000,
       joinDate: '2015-04-01',
       position: 'Branch Manager',
-      branch: 'Manchester'
+      branch: 'Manchester - Trafford Centre'
     },
     {
       id: '700106',
@@ -66,7 +66,7 @@ export class EmployeeService {
       salary: 20000,
       joinDate: '2016-02-01',
       position: 'Officer',
-      branch: 'Oxford'
+      branch: 'York - Coppergate'
     },
     {
       id: '700107',
@@ -76,7 +76,7 @@ export class EmployeeService {
       salary: 19000,
       joinDate: '2017-11-01',
       position: 'Officer',
-      branch: 'Oxford'
+      branch: 'York - Coppergate'
     },
     {
       id: '700108',
@@ -86,7 +86,7 @@ export class EmployeeService {
       salary: 15000,
       joinDate: '2014-04-01',
       position: 'Officer',
-      branch: 'Oxford'
+      branch: 'York - Coppergate'
     },
     {
       id: '700109',
@@ -96,7 +96,7 @@ export class EmployeeService {
       salary: 18000,
       joinDate: '2019-12-01',
       position: 'Officer',
-      branch: 'Oxford'
+      branch: 'York - Coppergate'
     },
     {
       id: '700110',
@@ -106,7 +106,7 @@ export class EmployeeService {
       salary: 25000,
       joinDate: '2019-01-01',
       position: 'Branch Manager',
-      branch: 'Oxford'
+      branch: 'York - Coppergate'
     },
     {
       id: '700111',
@@ -116,7 +116,7 @@ export class EmployeeService {
       salary: 26000,
       joinDate: '2015-03-01',
       position: 'Branch Manager',
-      branch: 'Bristol'
+      branch: 'Leeds - Trinity'
     },
     {
       id: '700112',
@@ -126,7 +126,7 @@ export class EmployeeService {
       salary: 15000,
       joinDate: '2016-04-01',
       position: 'Officer',
-      branch: 'Bristol'
+      branch: 'Leeds - Trinity'
     },
     {
       id: '700113',
@@ -136,7 +136,7 @@ export class EmployeeService {
       salary: 16000,
       joinDate: '2018-01-01',
       position: 'Officer',
-      branch: 'Bristol'
+      branch: 'Leeds - Trinity'
     },
     {
       id: '700114',
@@ -146,7 +146,7 @@ export class EmployeeService {
       salary: 17000,
       joinDate: '2018-08-01',
       position: 'Officer',
-      branch: 'Bristol'
+      branch: 'Leeds - Trinity'
     },
     {
       id: '700115',
@@ -156,7 +156,7 @@ export class EmployeeService {
       salary: 27000,
       joinDate: '2017-09-01',
       position: 'Branch Manager',
-      branch: 'Birmingham'
+      branch: 'Birmingham - Fort Parkway'
     },
     {
       id: '700116',
@@ -166,7 +166,7 @@ export class EmployeeService {
       salary: 17000,
       joinDate: '2019-10-01',
       position: 'Officer',
-      branch: 'Birmingham'
+      branch: 'Birmingham - Fort Parkway'
     },
     {
       id: '700117',
@@ -176,7 +176,7 @@ export class EmployeeService {
       salary: 16000,
       joinDate: '2019-02-01',
       position: 'Officer',
-      branch: 'Birmingham'
+      branch: 'Birmingham - Fort Parkway'
     }
   ];
 

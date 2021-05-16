@@ -10,33 +10,33 @@ export class BranchService {
   branches = [
     {
       id: '101',
-      name: 'London',
+      name: 'London - Oxford Street East',
       telNo: '0817472899',
       address: '14-28 Oxford Street, Fitzrovia, London, United Kingdom, W1D 1AU'
     },
     {
       id: '102',
-      name: 'Manchester',
+      name: 'Manchester - Trafford Centre',
       telNo: '0896451090',
-      address: '106, Market Street, Manchester, United Kingdom, M1 1WA'
+      address: 'Barton Square, Intu Trafford Centre, Manchester, United Kingdom, M17 8AS'
     },
     {
       id: '103',
-      name: 'Oxford',
+      name: 'York - Coppergate',
       telNo: '0861141796',
-      address: '201, The Westgate, Queen Street, Oxford, United Kingdom, OX1 1PE'
+      address: '19-20, Coppergate Shopping Centre, York, United Kingdom, YO1 9NT'
     },
     {
       id: '104',
-      name: 'Bristol',
+      name: 'Leeds - Trinity',
       telNo: '0815608189',
-      address: '1, The Horsefair, Bristol, United Kingdom, BS1 3BB'
+      address: 'Albion Street, Leeds, United Kingdom, LS1 5AT'
     },
     {
       id: '105',
-      name: 'Birmingham',
+      name: 'Birmingham - Fort Parkway',
       telNo: '0890648050',
-      address: '38, High Street, Birmingham, United Kingdom, B4 7SL'
+      address: '1B-3A, The Fort Shopping Centre, Fort Parkway, Birmingham, United Kingdom, B24 9FP'
     }
   ];
 
