@@ -6,50 +6,54 @@
     <button class="main" routerLink="/employees/add">Add employee</button>
   </div>
   <table class="main">
-    <tr>
-      <th class="sortable" (click)="sort('id')">
-        <div class="header">
-          <div>ID</div>
-          <ng-template [ngIf]="sortBy === 'id'">
-            <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
-            <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
-          </ng-template>
-        </div>
-      </th>
-      <th class="sortable" (click)="sort('name')">
-        <div class="header">
-          <div>Name</div>
-          <ng-template [ngIf]="sortBy === 'name'">
-            <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
-            <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
-          </ng-template>
-        </div>
-      </th>
-      <th class="sortable" (click)="sort('branch')">
-        <div class="header">
-          <div>Branch</div>
-          <ng-template [ngIf]="sortBy === 'branch'">
-            <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
-            <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
-          </ng-template>
-        </div>
-      </th>
-      <th class="sortable" (click)="sort('position')">
-        <div class="header">
-          <div>Position</div>
-          <ng-template [ngIf]="sortBy === 'position'">
-            <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
-            <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
-          </ng-template>
-        </div>
-      </th>
-    </tr>
-    <tr *ngFor="let e of employees" routerLink="/employees/{{e.id}}">
-      <td><a routerLink="/employees/{{e.id}}">{{e.id}}</a></td>
-      <td><a routerLink="/employees/{{e.id}}">{{e.name + ' ' + e.surname}}</a></td>
-      <td>{{e.branch}}</td>
-      <td>{{e.position}}</td>
-    </tr>
+    <thead>
+      <tr>
+        <th class="sortable" (click)="sort('id')">
+          <div class="header">
+            <div>ID</div>
+            <ng-template [ngIf]="sortBy === 'id'">
+              <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
+              <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
+            </ng-template>
+          </div>
+        </th>
+        <th class="sortable" (click)="sort('name')">
+          <div class="header">
+            <div>Name</div>
+            <ng-template [ngIf]="sortBy === 'name'">
+              <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
+              <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
+            </ng-template>
+          </div>
+        </th>
+        <th class="sortable" (click)="sort('branch')">
+          <div class="header">
+            <div>Branch</div>
+            <ng-template [ngIf]="sortBy === 'branch'">
+              <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
+              <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
+            </ng-template>
+          </div>
+        </th>
+        <th class="sortable" (click)="sort('position')">
+          <div class="header">
+            <div>Position</div>
+            <ng-template [ngIf]="sortBy === 'position'">
+              <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
+              <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
+            </ng-template>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of employees" routerLink="/employees/{{e.id}}">
+        <td><a routerLink="/employees/{{e.id}}">{{e.id}}</a></td>
+        <td><a routerLink="/employees/{{e.id}}">{{e.name + ' ' + e.surname}}</a></td>
+        <td>{{e.branch}}</td>
+        <td>{{e.position}}</td>
+      </tr>
+    </tbody>
   </table>
   <div>
     <mat-paginator
