@@ -70,7 +70,7 @@ export class BranchDetailComponent implements OnInit {
       address: [this.branch.address, Validators.required],
       telNo: [this.branch.telNo, Validators.required],
       map: [this.branch.map]
-    })
+    });
   }
 
   onIFrameLoaded(): void {
