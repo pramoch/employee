@@ -1,27 +1,39 @@
-<div class="wrapper">
-  <section>
-    <div class="title">Branch Info</div>
-    <!-- Name -->
-    <div class="info">
-      <div>Name</div>
-      <div>{{branch.name}}</div>
-    </div>
-    <!-- Tel No. -->
-    <div class="info">
-      <div>Tel</div>
-      <div>{{branch.telNo | phone}}</div>
-    </div>
-    <!-- Address -->
-    <div class="info">
-      <div>Address</div>
-      <div>{{branch.address}}</div>
-    </div>
-    <!-- Maps -->
-    <div class="info">
-      <div>Map</div>
-      <div>
-        <iframe (load)="onIFrameLoaded()" [src]="branch.map | safe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<form>
+  <div class="top-bar">
+    <div class="middle-space"></div>
+    <ng-template [ngIf]="mode === 'view'">
+      <button class="main" (click)="onEdit()">Edit</button>
+    </ng-template>
+    <ng-template [ngIf]="mode === 'edit'">
+      <button class="main cancel" (click)="onCancel()">Cancel</button>
+      <button class="main" (click)="onSave()" [disabled]="!branchForm.valid || branchForm.pristine">Save</button>
+    </ng-template>
+  </div>
+  <div class="wrapper">
+    <section>
+      <div class="title">Branch Info</div>
+      <!-- Name -->
+      <div class="info">
+        <div>Name</div>
+        <div>{{branch.name}}</div>
       </div>
-    </div>
-  </section>
-</div>
+      <!-- Tel No. -->
+      <div class="info">
+        <div>Tel</div>
+        <div>{{branch.telNo | phone}}</div>
+      </div>
+      <!-- Address -->
+      <div class="info">
+        <div>Address</div>
+        <div>{{branch.address}}</div>
+      </div>
+      <!-- Maps -->
+      <div class="info">
+        <div>Map</div>
+        <div>
+          <iframe (load)="onIFrameLoaded()" [src]="branch.map | safe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+  </div>
+</form>

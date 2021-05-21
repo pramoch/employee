@@ -19,6 +19,7 @@ import { DialogService } from '../../services/dialog/dialog.service';
   styleUrls: ['./employee-detail.component.scss']
 })
 export class EmployeeDetailComponent implements OnInit {
+  id: string | null = null;
   emp: Employee = {
     id: '',
     name: '',
@@ -33,7 +34,6 @@ export class EmployeeDetailComponent implements OnInit {
   positions: string[] = [];
   branches: Branch[] = [];
   employeeForm!: FormGroup;
-  id: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
