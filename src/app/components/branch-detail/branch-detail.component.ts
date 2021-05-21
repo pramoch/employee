@@ -37,12 +37,13 @@ export class BranchDetailComponent implements OnInit {
     if (this.id) {
       this.branchService.getBranchById(this.id)
         .subscribe(result => {
-          this.dialog.hideLoading();
-
           if (result.status.success && result.data) {
+            // loading screen will be hidden in onIFrameLoaded
             this.branch = result.data.branch;
           }
           else {
+            this.dialog.hideLoading();
+
             this.dialog.showConfirm({
               title: 'Error',
               msg: result.status.desc,
@@ -52,6 +53,12 @@ export class BranchDetailComponent implements OnInit {
             });
           }
         });
+    }
+  }
+
+  onIFrameLoaded(): void {
+    if (this.branch.map) {
+      this.dialog.hideLoading();
     }
   }
 }
