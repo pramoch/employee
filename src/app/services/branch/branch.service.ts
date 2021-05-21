@@ -47,14 +47,34 @@ export class BranchService {
 
   constructor() { }
 
-  getBranches(): Observable<BranchesResult> {
+  getBranches(sortBy = '', desc = false): Observable<BranchesResult> {
+    let result = [...this.branches];
+
+    if (sortBy) {
+      result = result.sort((a: any, b: any) => {
+        if (a[sortBy] > b[sortBy]) {
+          return 1;
+        }
+        else if (a[sortBy] < b[sortBy]) {
+          return -1;
+        }
+        else {
+          return 0;
+        }
+      });
+    }
+
+    if (desc) {
+      result = result.reverse();
+    }
+
     return of({
       status: {
         success: true,
         desc: 'success'
       },
       data: {
-        branches: this.branches
+        branches: result
       }
     }).pipe(delay(300));
   }

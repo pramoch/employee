@@ -2,8 +2,14 @@
   <table class="main">
     <thead>
       <tr>
-        <th>
-          Branch Name
+        <th class="sortable" (click)="sort('name')">
+          <div class="header">
+            <div>Branch Name</div>
+            <ng-template [ngIf]="sortBy === 'name'">
+              <mat-icon *ngIf="!desc">arrow_drop_up</mat-icon>
+              <mat-icon *ngIf="desc">arrow_drop_down</mat-icon>
+            </ng-template>
+          </div>
         </th>
         <th>
           Tel.
