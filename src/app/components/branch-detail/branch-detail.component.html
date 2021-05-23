@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="branchForm" *ngIf="branchForm">
   <div class="top-bar">
     <div class="middle-space"></div>
     <ng-template [ngIf]="mode === 'view'">
@@ -15,12 +15,28 @@
       <!-- Name -->
       <div class="info">
         <div>Name</div>
-        <div>{{branch.name}}</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{branch.name}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
+          <input class="main" type="text" formControlName="name" placeholder="Enter name">
+          <div class="error" *ngIf="branchForm.controls.name.errors && branchForm.controls.name.errors.required && branchForm.controls.name.touched">
+            This field is required.
+          </div>
+        </ng-template>
       </div>
       <!-- Tel No. -->
       <div class="info">
         <div>Tel</div>
-        <div>{{branch.telNo | phone}}</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{branch.telNo | phone}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
+          <input class="main" type="text" formControlName="telNo" placeholder="Enter telephone no." maxlength="10">
+          <div class="error" *ngIf="branchForm.controls.telNo.errors && branchForm.controls.telNo.errors.required && branchForm.controls.telNo.touched">
+            This field is required.
+          </div>
+        </ng-template>
       </div>
       <!-- Address -->
       <div class="info">
