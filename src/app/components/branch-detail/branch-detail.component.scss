@@ -40,3 +40,7 @@ section:not(:last-child) {
     padding-left: 8px;
   }
 }
+
+input.address, input.map {
+  flex: 1 1 auto;
+}

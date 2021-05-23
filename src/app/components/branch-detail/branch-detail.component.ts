@@ -42,7 +42,6 @@ export class BranchDetailComponent implements OnInit {
       this.branchService.getBranchById(this.id)
         .subscribe(result => {
           if (result.status.success && result.data) {
-            // loading screen will be hidden in onIFrameLoaded
             this.setBranch(result.data.branch);
           }
           else {
@@ -65,6 +64,11 @@ export class BranchDetailComponent implements OnInit {
       this.branch = branch;
     }
 
+    if (!this.branch.map) {
+      // If map is available, loading screen will be hidden after IFrame is loaded
+      this.dialog.hideLoading();
+    }
+
     this.branchForm = this.fb.group({
       name: [this.branch.name, Validators.required],
       address: [this.branch.address, Validators.required],
@@ -73,8 +77,8 @@ export class BranchDetailComponent implements OnInit {
     });
   }
 
-  onIFrameLoaded(): void {
-    if (this.branch.map) {
+  onIFrameLoaded(e: HTMLIFrameElement): void {
+    if (e.src) {
       this.dialog.hideLoading();
     }
   }

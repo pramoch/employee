@@ -41,14 +41,28 @@
       <!-- Address -->
       <div class="info">
         <div>Address</div>
-        <div>{{branch.address}}</div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div>{{branch.address}}</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
+          <input class="main address" type="text" formControlName="address" placeholder="Enter address">
+          <div class="error" *ngIf="branchForm.controls.address.errors && branchForm.controls.address.errors.required && branchForm.controls.address.touched">
+            This field is required.
+          </div>
+        </ng-template>
       </div>
       <!-- Maps -->
       <div class="info">
         <div>Map</div>
-        <div>
-          <iframe (load)="onIFrameLoaded()" [src]="branch.map | safe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+        <ng-template [ngIf]="mode === 'view'">
+          <div *ngIf="branch.map">
+            <iframe (load)="onIFrameLoaded($event.target)" [src]="branch.map | safe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          <div *ngIf="!branch.map">-</div>
+        </ng-template>
+        <ng-template [ngIf]="mode === 'edit' || mode === 'add'">
+          <input class="main map" type="text" formControlName="map" placeholder="Enter map url">
+        </ng-template>
       </div>
     </section>
   </div>
