@@ -77,8 +77,8 @@ export class BranchDetailComponent implements OnInit {
     });
   }
 
-  onIFrameLoaded(e: HTMLIFrameElement): void {
-    if (e.src) {
+  onIFrameLoaded(e: Event): void {
+    if ((e.target as HTMLIFrameElement).src) {
       this.dialog.hideLoading();
     }
   }

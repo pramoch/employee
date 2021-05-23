@@ -56,7 +56,7 @@
         <div>Map</div>
         <ng-template [ngIf]="mode === 'view'">
           <div *ngIf="branch.map">
-            <iframe (load)="onIFrameLoaded($event.target)" [src]="branch.map | safe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe (load)="onIFrameLoaded($event)" [src]="branch.map | safe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
           <div *ngIf="!branch.map">-</div>
         </ng-template>
