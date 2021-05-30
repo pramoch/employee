@@ -88,15 +88,51 @@ export class BranchDetailComponent implements OnInit {
   }
 
   onSave(): void {
-    console.log('save');
+    if (this.id) {
+      const updatedBranch = {
+        id: this.id,
+        name: this.branchForm.value.name,
+        address: this.branchForm.value.address,
+        telNo: this.branchForm.value.telNo,
+        map: this.branchForm.value.map
+      }
+
+      this.dialog.showLoading();
+
+      this.branchService.updateBranchById(this.id, updatedBranch)
+        .subscribe(result => {
+          if (result.status.success && result.data) {
+            this.setBranch(result.data.branch);
+            this.mode = 'view';
+          }
+        });
+    }
   }
 
   onCancel(): void {
-    console.log('cancel');
-    this.quitEdit();
+    if (this.branchForm.dirty) {
+      this.dialog.showConfirm({
+        title: 'Quit editing?',
+        msg: 'Changes you made so far will not be saved.',
+        confirmText: 'Quit',
+        cancelText: 'Keep editing'
+      }).subscribe(result => {
+        if (result) {
+          this.setBranch(this.branch);
+          this.quitEdit();
+        }
+      });
+    }
+    else {
+      this.quitEdit();
+    }
   }
 
   quitEdit(): void {
+    if (this.branch.map) {
+      this.dialog.showLoading();
+    }
+
     this.mode = 'view';
   }
 }

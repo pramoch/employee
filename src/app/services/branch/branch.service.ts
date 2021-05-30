@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { BranchesResult, BranchResult } from '../../interfaces/branch';
+import { Branch, BranchesResult, BranchResult } from '../../interfaces/branch';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BranchService {
-  branches = [
+  branches: Branch[] = [
     {
       id: '101',
       name: 'London - Oxford Street East',
@@ -101,5 +101,20 @@ export class BranchService {
         }
       });
     }
+  }
+
+  updateBranchById(id: string, b: Branch): Observable<BranchResult> {
+    const index = this.branches.findIndex(e => e.id === id);
+    this.branches[index] = b;
+
+    return of({
+      status: {
+        success: true,
+        desc: 'success'
+      },
+      data: {
+        branch: b
+      }
+    }).pipe(delay(300));
   }
 }
