@@ -95,7 +95,7 @@ export class BranchDetailComponent implements OnInit {
         address: this.branchForm.value.address,
         telNo: this.branchForm.value.telNo,
         map: this.branchForm.value.map
-      }
+      };
 
       this.dialog.showLoading();
 
